@@ -8,14 +8,16 @@
   <packaging>jar</packaging>
   <name>RestAssured_Concepts</name>
   <url>http://maven.apache.org</url>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <rest.assured.version>5.3.2</rest.assured.version>
-    <json.version>20230618</json.version>
-    <gson.version>2.10.1</gson.version>
-    <testng.version>7.8.0</testng.version>
-    <scribe.version>8.3.3</scribe.version>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <rest.assured.version>5.3.2</rest.assured.version>
+        <json.version>20230618</json.version>
+        <gson.version>2.10.1</gson.version>
+        <testng.version>7.8.0</testng.version>
+        <scribe.version>8.3.3</scribe.version>
+        <maven.compiler.source>20</maven.compiler.source>
+        <maven.compiler.target>20</maven.compiler.target>
+    </properties>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
     <dependency>
@@ -62,6 +64,12 @@
       <groupId>io.rest-assured</groupId>
       <artifactId>json-schema-validator</artifactId>
       <version>${rest.assured.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>xml-path</artifactId>
+      <version>${rest.assured.version}</version>
+      <!--<scope>test</scope>-->
     </dependency>
   </dependencies>
 </project>
