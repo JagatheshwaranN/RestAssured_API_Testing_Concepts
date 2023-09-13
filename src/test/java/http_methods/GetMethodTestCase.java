@@ -12,12 +12,13 @@ public class GetMethodTestCase {
 
     @Test(priority = 1, enabled = true)
     public void get(){
+
         given()
         .when()
-            .get("https://reqres.in/api/users/2")
+                .get("https://reqres.in/api/users/2")
         .then()
-            .statusCode(200)
-            .body("data.id", equalTo(2))
-            .log().all();
+                .statusCode(200)
+                .body("data.id", equalTo(2))
+                .log().all();
     }
 }

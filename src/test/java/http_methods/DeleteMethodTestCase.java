@@ -16,9 +16,9 @@ public class DeleteMethodTestCase {
 
         given()
         .when()
-            .delete("https://reqres.in/api/users/126")
+                .delete("https://reqres.in/api/users/126")
         .then()
-            .statusCode(204)
-            .log().all();
+                .statusCode(204)
+                .log().all();
     }
 }

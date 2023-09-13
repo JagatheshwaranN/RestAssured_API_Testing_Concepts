@@ -22,12 +22,12 @@ public class PutMethodTestCase {
         updateData.put("job", "Senior Tester");
 
         given()
-            .contentType("application/json")
-            .body(updateData)
+                .contentType("application/json")
+                .body(updateData)
         .when()
-            .put("https://reqres.in/api/users/126")
+                .put("https://reqres.in/api/users/126")
         .then()
-            .statusCode(200)
-            .log().all();
+                .statusCode(200)
+                .log().all();
     }
 }
