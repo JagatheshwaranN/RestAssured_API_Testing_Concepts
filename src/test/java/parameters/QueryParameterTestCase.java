@@ -4,6 +4,10 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.*;
 
+/**
+ * @restapi
+ * @get
+ */
 public class QueryParameterTestCase {
 
     @Test(priority = 1)
