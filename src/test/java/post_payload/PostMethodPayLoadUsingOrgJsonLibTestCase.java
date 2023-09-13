@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.equalTo;
  */
 public class PostMethodPayLoadUsingOrgJsonLibTestCase {
 
-    @Test(priority = 1, enabled = true)
+    @Test(priority = 1)
     public void postUsingOrgJsonAsPayload() {
 
         JSONObject studentData = new JSONObject();

@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.equalTo;
  */
 public class PostMethodPayLoadUsingExternalJsonTestCase {
 
-    @Test(priority = 1, enabled = true)
+    @Test(priority = 1)
     public void postUsingExternalJsonAsPayload() {
 
         JSONObject studentData;

@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.*;
  */
 public class PostMethodPayLoadUsingHashMapTestCase {
 
-    @Test(priority = 1, enabled = true)
+    @Test(priority = 1)
     public void postUsingHashMapAsPayload() {
 
         HashMap<String, Object> studentData = new HashMap<>();

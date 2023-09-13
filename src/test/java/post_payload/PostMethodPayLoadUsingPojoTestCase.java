@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.equalTo;
  */
 public class PostMethodPayLoadUsingPojoTestCase {
 
-    @Test(priority = 1, enabled = true)
+    @Test(priority = 1)
     public void postUsingPojoAsPayload() {
 
        Student studentData = new Student();
