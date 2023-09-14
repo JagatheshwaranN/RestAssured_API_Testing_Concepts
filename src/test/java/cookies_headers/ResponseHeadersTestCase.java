@@ -30,9 +30,9 @@ public class ResponseHeadersTestCase {
 
         ValidatableResponse response =
                 given()
-                        .when()
+                .when()
                         .get("http://localhost:3000/students/1")
-                        .then()
+                .then()
                         .statusCode(200);
 
         Headers headers = response.extract().headers();

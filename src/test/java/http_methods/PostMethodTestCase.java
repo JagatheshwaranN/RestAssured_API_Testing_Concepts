@@ -1,7 +1,6 @@
 package http_methods;
 
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -12,7 +11,7 @@ import java.util.HashMap;
  */
 public class PostMethodTestCase {
 
-    @Test(priority = 1, enabled = true)
+    @Test(priority = 1)
     public void post(){
 
         HashMap<String, String> userData = new HashMap<>();

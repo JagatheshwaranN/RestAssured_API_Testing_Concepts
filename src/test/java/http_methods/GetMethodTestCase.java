@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
  */
 public class GetMethodTestCase {
 
-    @Test(priority = 1, enabled = true)
+    @Test(priority = 1)
     public void get(){
 
         given()

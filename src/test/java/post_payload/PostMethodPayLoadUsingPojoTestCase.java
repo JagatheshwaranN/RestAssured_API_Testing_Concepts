@@ -1,6 +1,5 @@
 package post_payload;
 
-import org.json.JSONObject;
 import org.testng.annotations.Test;
 import pojo.Student;
 
@@ -41,7 +40,7 @@ public class PostMethodPayLoadUsingPojoTestCase {
 
 
         /*
-            The below code is to reset the studentData with id 4 to use in other scenarios
+            The below code is to reset the student record with id 4 to use in other scenarios
         */
         given()
         .when()

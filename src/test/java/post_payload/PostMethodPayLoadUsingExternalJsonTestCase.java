@@ -3,10 +3,7 @@ package post_payload;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.testng.annotations.Test;
-import pojo.Student;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -49,7 +46,7 @@ public class PostMethodPayLoadUsingExternalJsonTestCase {
 
 
         /*
-            The below code is to reset the studentData with id 4 to use in other scenarios
+            The below code is to reset the student record with id 4 to use in other scenarios
         */
         given()
         .when()

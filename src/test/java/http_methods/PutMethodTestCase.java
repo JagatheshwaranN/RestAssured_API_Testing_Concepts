@@ -1,12 +1,8 @@
 package http_methods;
 
 import org.testng.annotations.Test;
-
 import java.util.HashMap;
-
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-
 
 /**
  * @restapi
@@ -14,7 +10,7 @@ import static org.hamcrest.Matchers.*;
  */
 public class PutMethodTestCase {
 
-    @Test(priority = 1, enabled = true)
+    @Test(priority = 1)
     public void put(){
 
         HashMap<String, String> updateData = new HashMap<>();

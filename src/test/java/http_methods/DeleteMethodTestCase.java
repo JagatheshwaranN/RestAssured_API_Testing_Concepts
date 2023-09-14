@@ -3,7 +3,6 @@ package http_methods;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
 
 /**
  * @restapi
@@ -11,7 +10,7 @@ import static org.hamcrest.Matchers.*;
  */
 public class DeleteMethodTestCase {
 
-    @Test(priority = 1, enabled = true)
+    @Test(priority = 1)
     public void delete(){
 
         given()

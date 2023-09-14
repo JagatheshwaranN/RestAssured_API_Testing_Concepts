@@ -3,8 +3,6 @@ package post_payload;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 
-import java.util.HashMap;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -40,9 +38,8 @@ public class PostMethodPayLoadUsingOrgJsonLibTestCase {
                 .header("Content-Type", "application/json; charset=utf-8")
                 .log().all();
 
-
         /*
-            The below code is to reset the studentData with id 4 to use in other scenarios
+            The below code is to reset the student record with id 4 to use in other scenarios
         */
         given()
         .when()

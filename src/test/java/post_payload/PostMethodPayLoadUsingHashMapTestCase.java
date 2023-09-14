@@ -41,7 +41,7 @@ public class PostMethodPayLoadUsingHashMapTestCase {
 
 
         /*
-            The below code is to reset the studentData with id 4 to use in other scenarios
+            The below code is to reset the student record with id 4 to use in other scenarios
         */
         given()
         .when()
