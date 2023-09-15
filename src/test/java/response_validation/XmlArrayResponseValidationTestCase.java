@@ -10,6 +10,10 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
+/**
+ * @restapi
+ * @get
+ */
 public class XmlArrayResponseValidationTestCase {
 
     @Test(priority = 1)

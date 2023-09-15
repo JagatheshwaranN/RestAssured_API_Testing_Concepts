@@ -1,0 +1,22 @@
+[
+ {
+   "BookId": 1,
+   "CustomerName": "John"
+ },
+ {
+   "BookId": 1,
+   "CustomerName": "Alex"
+ },
+ {
+   "BookId": 3,
+   "CustomerName": "Erick"
+ },
+ {
+   "BookId": 4,
+   "CustomerName": "Jenni"
+ },
+ {
+   "BookId": 6,
+   "CustomerName": "Blake"
+ }
+]

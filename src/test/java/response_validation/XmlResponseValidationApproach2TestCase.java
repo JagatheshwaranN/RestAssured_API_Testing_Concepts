@@ -7,7 +7,10 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-
+/**
+ * @restapi
+ * @get
+ */
 public class XmlResponseValidationApproach2TestCase {
 
     @Test(priority = 1)
