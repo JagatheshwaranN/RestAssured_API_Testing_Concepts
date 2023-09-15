@@ -24,6 +24,5 @@ public class ResponseValidationApproach2TestCase {
         Assert.assertEquals(response.extract().header("Connection"), "keep-alive");
         String bookTitle = response.extract().body().jsonPath().get("books[1].title").toString();
         Assert.assertEquals(bookTitle, "The Art of Cooking");
-
     }
 }

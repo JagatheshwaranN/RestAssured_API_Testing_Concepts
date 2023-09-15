@@ -12,11 +12,10 @@ public class ResponseValidationApproach1TestCase {
     public void validateResponseApproach1() {
 
         given()
-                .when()
+        .when()
                 .get("http://localhost:3000/store")
-                .then()
+        .then()
                 .statusCode(200)
                 .body("books[1].title", equalTo("The Art of Cooking"));
-
     }
 }
