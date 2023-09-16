@@ -5,6 +5,10 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
+/**
+ * @restapi
+ * @get
+ */
 public class FileDownloadTestCase {
 
     @Test(priority = 1)
