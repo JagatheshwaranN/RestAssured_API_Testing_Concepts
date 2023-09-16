@@ -13,6 +13,7 @@ public class DeserializationTestCase {
     @Test(priority = 1)
     public void deserializeDemo() {
 
+        // Deserialization - Conversion of JSON into POJO Object
         String studentJson = "{\n" +
                 "  \"name\" : \"Adam\",\n" +
                 "  \"location\" : \"Richmond\",\n" +
