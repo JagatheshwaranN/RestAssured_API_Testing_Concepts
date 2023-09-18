@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 public class APIKeyTestCase {
 
     @Test(priority = 1)
-    public void validateAPIKeyTestCase(){
+    public void validateAPIKey(){
 
         given()
                 .headers("X-NTK-KEY", "test_gLYqwo0wftF1Ph2pTxEbWah1B0sNYU8wlEoQ6KW1")
