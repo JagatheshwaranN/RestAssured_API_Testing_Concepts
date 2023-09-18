@@ -1,5 +1,6 @@
 package chaining;
 
+import com.github.javafaker.Faker;
 import io.restassured.response.ValidatableResponse;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -17,14 +18,19 @@ public class UpdateStudentTestCase {
     @Test(priority = 1)
     public void updateStudent(ITestContext context){
 
+        // The below code is used in tests tag level of testNG xml file
+        // int id = (Integer) context.getAttribute("stud_id");
+
+        // The below code is used across tests tage level i.e. suite level of testNG xml file
+        int id = (Integer) context.getSuite().getAttribute("stud_id");
+
+        Faker faker = new Faker();
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("name", "Adam Smith");
-        jsonObject.put("location", "Seattle");
-        jsonObject.put("phone", "313-456-7890");
+        jsonObject.put("name", faker.name().firstName());
+        jsonObject.put("location", faker.address().city());
+        jsonObject.put("phone", faker.phoneNumber().cellPhone());
         String[] courses = {"Accounts", "Commerce", "Computer Science"};
         jsonObject.put("courses", courses);
-
-        int id = (Integer) context.getAttribute("stud_id");
 
         ValidatableResponse response =
                 given()

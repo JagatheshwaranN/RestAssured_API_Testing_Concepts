@@ -17,7 +17,12 @@ public class GetStudentTestCase {
     @Test(priority = 1)
     public void getStudent(ITestContext context){
 
-        int id = (Integer) context.getAttribute("stud_id");
+        // The below code is used in tests tag level of testNG xml file
+        // int id = (Integer) context.getAttribute("stud_id");
+
+        // The below code is used across tests tage level i.e. suite level of testNG xml file
+        int id = (Integer) context.getSuite().getAttribute("stud_id");
+
         ValidatableResponse response =
                 given()
                         .pathParam("student_id", id)
