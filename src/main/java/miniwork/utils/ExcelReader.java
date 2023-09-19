@@ -42,7 +42,7 @@ public class ExcelReader {
                 xssfWorkbook.close();
                 fileInputStream.close();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
         return rowCount;
@@ -65,13 +65,13 @@ public class ExcelReader {
                 xssfWorkbook.close();
                 fileInputStream.close();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
         return cellCount;
     }
 
-    public String getCellData(String xssfSheetName, int rowNum, int colNum) {
+    public String getExcelCellData(String xssfSheetName, int rowNum, int colNum) {
 
         String data;
         try{
@@ -90,7 +90,7 @@ public class ExcelReader {
                 xssfWorkbook.close();
                 fileInputStream.close();
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
         return data;

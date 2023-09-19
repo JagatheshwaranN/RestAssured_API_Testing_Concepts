@@ -2,7 +2,7 @@ package miniwork.tests;
 
 import com.github.javafaker.Faker;
 import io.restassured.response.Response;
-import miniwork.endpoint.UserEndpointMethods;
+import miniwork.endpoint.UserApiEndpointMethods;
 import miniwork.payload.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -32,7 +32,7 @@ public class UserTestCase {
     public void validateCreateUserTest(){
 
         System.out.println("************ Create User Response ************");
-        Response response = UserEndpointMethods.createUser(user);
+        Response response = UserApiEndpointMethods.createUser(user);
         response.then().log().body();
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(Integer.parseInt(response.jsonPath().get("message")), user.getId());
@@ -42,11 +42,15 @@ public class UserTestCase {
     public void validateReadUserTest(){
 
         System.out.println("************ Read User Response ************");
-        Response response = UserEndpointMethods.retrieveUser(user.getUsername());
+        Response response = UserApiEndpointMethods.retrieveUser(user.getUsername());
         response.then().log().body();
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(response.jsonPath().get("username"), user.getUsername());
         Assert.assertEquals(response.jsonPath().get("firstName"), user.getFirstName());
+        Assert.assertEquals(response.jsonPath().get("lastName"), user.getLastName());
+        Assert.assertEquals(response.jsonPath().get("email"), user.getEmail());
+        Assert.assertEquals(response.jsonPath().get("password"), user.getPassword());
+        Assert.assertEquals((Integer) response.jsonPath().get("userStatus"), user.getUserStatus());
     }
 
     @Test(priority = 3)
@@ -56,7 +60,7 @@ public class UserTestCase {
         user.setLastName(faker.name().lastName());
         user.setEmail(faker.internet().safeEmailAddress());
         System.out.println("************ Update User Response ************");
-        Response response = UserEndpointMethods.updateUser(user, user.getUsername());
+        Response response = UserApiEndpointMethods.updateUser(user, user.getUsername());
         response.then().log().body();
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(Integer.parseInt(response.jsonPath().get("message")), user.getId());
@@ -67,7 +71,7 @@ public class UserTestCase {
     public void validateDeleteUserTest(){
 
         System.out.println("************ Delete User Response ************");
-        Response response = UserEndpointMethods.deleteUser(user.getUsername());
+        Response response = UserApiEndpointMethods.deleteUser(user.getUsername());
         response.then().log().body();
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(response.jsonPath().get("message"), user.getUsername());

@@ -5,7 +5,7 @@ import io.restassured.response.Response;
 import miniwork.payload.User;
 import static io.restassured.RestAssured.*;
 
-public class UserEndpointMethods {
+public class UserApiEndpointMethods {
 
     public static Response createUser(User payload){
 
