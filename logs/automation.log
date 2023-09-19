@@ -1,0 +1,12 @@
+09:38:22.008 [main] INFO  miniwork.tests.UserTestCase - Test data setup is initiated
+09:38:22.426 [main] INFO  miniwork.tests.UserTestCase - Test data setup is completed
+09:38:22.453 [main] INFO  miniwork.tests.UserTestCase - ************ Create User Response ************
+09:38:28.560 [main] INFO  miniwork.tests.UserTestCase - ************ Create User Completed ************
+09:38:28.586 [main] INFO  miniwork.tests.UserTestCase - ************ Read User Response ************
+09:38:30.228 [main] INFO  miniwork.tests.UserTestCase - ************ Read User Completed ************
+09:38:30.236 [main] INFO  miniwork.tests.UserTestCase - ************ Update User Response ************
+09:38:31.663 [main] INFO  miniwork.tests.UserTestCase - ************ Read User Response ************
+09:38:33.299 [main] INFO  miniwork.tests.UserTestCase - ************ Read User Completed ************
+09:38:33.300 [main] INFO  miniwork.tests.UserTestCase - ************ Update User Completed ************
+09:38:33.304 [main] INFO  miniwork.tests.UserTestCase - ************ Delete User Response ************
+09:38:34.700 [main] INFO  miniwork.tests.UserTestCase - ************ Delete User Completed ************

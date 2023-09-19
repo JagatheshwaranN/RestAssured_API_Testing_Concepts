@@ -4,6 +4,8 @@ import com.github.javafaker.Faker;
 import io.restassured.response.Response;
 import miniwork.endpoint.UserApiEndpointMethods;
 import miniwork.payload.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -13,9 +15,13 @@ public class UserTestCase {
     Faker faker;
     User user;
 
-    @BeforeClass
-    public void dataSetup(){
+    private Logger log;
 
+    @BeforeClass
+    public void setup(){
+
+        log = LogManager.getLogger(this.getClass());
+        log.info("Test data setup is initiated");
         faker = new Faker();
         user = new User();
         user.setId(faker.idNumber().hashCode());
@@ -26,22 +32,24 @@ public class UserTestCase {
         user.setPassword(faker.internet().password(5, 10));
         user.setPhone(faker.phoneNumber().cellPhone());
         user.setUserStatus(0);
+        log.info("Test data setup is completed");
     }
 
     @Test(priority = 1)
     public void validateCreateUserTest(){
 
-        System.out.println("************ Create User Response ************");
+        log.info("************ Create User Response ************");
         Response response = UserApiEndpointMethods.createUser(user);
         response.then().log().body();
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(Integer.parseInt(response.jsonPath().get("message")), user.getId());
+        log.info("************ Create User Completed ************");
     }
 
     @Test(priority = 2)
     public void validateReadUserTest(){
 
-        System.out.println("************ Read User Response ************");
+        log.info("************ Read User Response ************");
         Response response = UserApiEndpointMethods.retrieveUser(user.getUsername());
         response.then().log().body();
         Assert.assertEquals(response.getStatusCode(), 200);
@@ -51,6 +59,7 @@ public class UserTestCase {
         Assert.assertEquals(response.jsonPath().get("email"), user.getEmail());
         Assert.assertEquals(response.jsonPath().get("password"), user.getPassword());
         Assert.assertEquals((Integer) response.jsonPath().get("userStatus"), user.getUserStatus());
+        log.info("************ Read User Completed ************");
     }
 
     @Test(priority = 3)
@@ -59,21 +68,23 @@ public class UserTestCase {
         user.setFirstName(faker.name().firstName());
         user.setLastName(faker.name().lastName());
         user.setEmail(faker.internet().safeEmailAddress());
-        System.out.println("************ Update User Response ************");
+        log.info("************ Update User Response ************");
         Response response = UserApiEndpointMethods.updateUser(user, user.getUsername());
         response.then().log().body();
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(Integer.parseInt(response.jsonPath().get("message")), user.getId());
         validateReadUserTest();
+        log.info("************ Update User Completed ************");
     }
 
     @Test(priority = 4)
     public void validateDeleteUserTest(){
 
-        System.out.println("************ Delete User Response ************");
+        log.info("************ Delete User Response ************");
         Response response = UserApiEndpointMethods.deleteUser(user.getUsername());
         response.then().log().body();
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(response.jsonPath().get("message"), user.getUsername());
+        log.info("************ Delete User Completed ************");
     }
 }

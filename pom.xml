@@ -16,6 +16,8 @@
         <testng.version>7.8.0</testng.version>
         <scribe.version>8.3.3</scribe.version>
         <poi.version>5.2.3</poi.version>
+        <extent.version>5.1.0</extent.version>
+        <log4j.version>3.0.0-alpha1</log4j.version>
         <maven.compiler.source>20</maven.compiler.source>
         <maven.compiler.target>20</maven.compiler.target>
     </properties>
@@ -94,7 +96,19 @@
     <dependency>
       <groupId>com.aventstack</groupId>
       <artifactId>extentreports</artifactId>
-      <version>5.1.0</version>
+      <version>${extent.version}</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>${log4j.version}</version>
     </dependency>
   </dependencies>
 </project>
