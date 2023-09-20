@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class UserTestCase {
@@ -36,10 +37,11 @@ public class UserTestCase {
     }
 
     @Test(priority = 1)
-    public void validateCreateUserTest(){
+    @Parameters({"runMode"})
+    public void validateCreateUserTest(String runMode){
 
         log.info("************ Create User Response ************");
-        Response response = UserApiEndpointMethods.createUser(user);
+        Response response = UserApiEndpointMethods.createUser(user, runMode);
         response.then().log().body();
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(Integer.parseInt(response.jsonPath().get("message")), user.getId());
@@ -47,10 +49,11 @@ public class UserTestCase {
     }
 
     @Test(priority = 2)
-    public void validateReadUserTest(){
+    @Parameters({"runMode"})
+    public void validateReadUserTest(String runMode){
 
         log.info("************ Read User Response ************");
-        Response response = UserApiEndpointMethods.retrieveUser(user.getUsername());
+        Response response = UserApiEndpointMethods.retrieveUser(user.getUsername(), runMode);
         response.then().log().body();
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(response.jsonPath().get("username"), user.getUsername());
@@ -63,25 +66,27 @@ public class UserTestCase {
     }
 
     @Test(priority = 3)
-    public void validateUpdateUserTest(){
+    @Parameters({"runMode"})
+    public void validateUpdateUserTest(String runMode){
 
         user.setFirstName(faker.name().firstName());
         user.setLastName(faker.name().lastName());
         user.setEmail(faker.internet().safeEmailAddress());
         log.info("************ Update User Response ************");
-        Response response = UserApiEndpointMethods.updateUser(user, user.getUsername());
+        Response response = UserApiEndpointMethods.updateUser(user, user.getUsername(), runMode);
         response.then().log().body();
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(Integer.parseInt(response.jsonPath().get("message")), user.getId());
-        validateReadUserTest();
+        validateReadUserTest(runMode);
         log.info("************ Update User Completed ************");
     }
 
     @Test(priority = 4)
-    public void validateDeleteUserTest(){
+    @Parameters({"runMode"})
+    public void validateDeleteUserTest(String runMode){
 
         log.info("************ Delete User Response ************");
-        Response response = UserApiEndpointMethods.deleteUser(user.getUsername());
+        Response response = UserApiEndpointMethods.deleteUser(user.getUsername(), runMode);
         response.then().log().body();
         Assert.assertEquals(response.getStatusCode(), 200);
         Assert.assertEquals(response.jsonPath().get("message"), user.getUsername());

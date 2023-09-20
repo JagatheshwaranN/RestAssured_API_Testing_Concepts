@@ -5,6 +5,7 @@
         <listener class-name="miniwork.utils.ReportManager" />
     </listeners>
     <test name="User API Test">
+        <parameter name="runMode" value="prop" />
         <classes>
             <class name="miniwork.tests.UserTestCase" />
         </classes>
