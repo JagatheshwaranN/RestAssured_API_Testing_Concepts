@@ -4,6 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -29,5 +30,6 @@ public class PostMethodTestCase {
         Response response = requestSpecification.body(userData).post();
         int statusCode = response.getStatusCode();
         System.out.println(statusCode);
+        Assert.assertEquals(statusCode, 201);
     }
 }
