@@ -14,14 +14,14 @@ public class PutMethodTestCase {
     public void put(){
 
         HashMap<String, String> updateData = new HashMap<>();
-        updateData.put("name", "John");
-        updateData.put("job", "Senior Tester");
+        updateData.put("first_name", "John");
+        updateData.put("last_name", "Smith");
 
         given()
                 .contentType("application/json")
                 .body(updateData)
         .when()
-                .put("https://reqres.in/api/users/126")
+                .put("https://reqres.in/api/users/2")
         .then()
                 .statusCode(200)
                 .log().all();
