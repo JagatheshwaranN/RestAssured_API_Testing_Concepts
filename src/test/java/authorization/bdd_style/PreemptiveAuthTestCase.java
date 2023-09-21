@@ -1,21 +1,21 @@
-package authorization;
+package authorization.bdd_style;
 
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 /**
  * @restapi
  * @get
  */
-public class BasicAuthTestCase {
+public class PreemptiveAuthTestCase {
 
     @Test(priority = 1)
-    public void validateBasicAuth() {
+    public void validatePreemptiveAuth() {
 
         given()
-                .auth().basic("postman","password")
+                .auth().preemptive().basic("postman","password")
         .when()
                 .get("https://postman-echo.com/basic-auth")
         .then()

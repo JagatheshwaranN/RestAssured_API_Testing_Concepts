@@ -1,4 +1,4 @@
-package authorization;
+package authorization.bdd_style;
 
 import org.testng.annotations.Test;
 
@@ -9,13 +9,13 @@ import static org.hamcrest.Matchers.equalTo;
  * @restapi
  * @get
  */
-public class PreemptiveAuthTestCase {
+public class DigestAuthTestCase {
 
     @Test(priority = 1)
-    public void validatePreemptiveAuth() {
+    public void validateDigestAuth() {
 
         given()
-                .auth().preemptive().basic("postman","password")
+                .auth().digest("postman","password")
         .when()
                 .get("https://postman-echo.com/basic-auth")
         .then()

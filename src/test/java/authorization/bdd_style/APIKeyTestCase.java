@@ -1,4 +1,4 @@
-package authorization;
+package authorization.bdd_style;
 
 import org.testng.annotations.Test;
 
