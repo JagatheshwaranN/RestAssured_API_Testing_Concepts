@@ -1,4 +1,4 @@
-package http_methods;
+package http_methods.bdd_style;
 
 import static io.restassured.RestAssured.*;
 import org.testng.annotations.Test;

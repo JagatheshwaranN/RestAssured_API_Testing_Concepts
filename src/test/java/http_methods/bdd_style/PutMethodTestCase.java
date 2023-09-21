@@ -1,4 +1,4 @@
-package http_methods;
+package http_methods.bdd_style;
 
 import org.testng.annotations.Test;
 import java.util.HashMap;
