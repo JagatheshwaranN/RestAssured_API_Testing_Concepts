@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class DeleteMethodTestCase {
 
     @Test(priority = 1)
-    public void delete(){
+    public void deleteMethod(){
 
         RestAssured.baseURI = "https://reqres.in";
         RestAssured.basePath = "/api/users/2";

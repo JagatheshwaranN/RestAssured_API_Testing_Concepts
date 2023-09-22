@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class PutMethodTestCase {
 
     @Test(priority = 1)
-    public void put(){
+    public void putMethod(){
 
         HashMap<String, String> updateData = new HashMap<>();
         updateData.put("first_name", "John");

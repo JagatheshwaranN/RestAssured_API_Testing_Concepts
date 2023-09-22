@@ -28,8 +28,8 @@ public class BearerTokenTestCase {
         userData.put("email", name+"@test.com");
         userData.put("status", "inactive");
 
-        RestAssured.baseURI = "https://gorest.co.in/public/v2";
-        RestAssured.basePath = "/users";
+        RestAssured.baseURI = "https://gorest.co.in";
+        RestAssured.basePath = "/public/v2/users";
 
         RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.header("Authorization", "Bearer "+bearerToken);

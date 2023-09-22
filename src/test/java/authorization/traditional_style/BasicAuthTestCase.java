@@ -1,7 +1,6 @@
 package authorization.traditional_style;
 
 import io.restassured.RestAssured;
-import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.commons.codec.binary.Base64;
@@ -24,7 +23,7 @@ public class BasicAuthTestCase {
         String basicAuthString = new String(basicAuth);
         RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.header("Authorization", "Basic "+basicAuthString);
-        Response response = requestSpecification.request(Method.GET);
+        Response response = requestSpecification.get();
         Boolean status = response.getBody().jsonPath().get("authenticated");
         Assert.assertEquals(status, true);
     }

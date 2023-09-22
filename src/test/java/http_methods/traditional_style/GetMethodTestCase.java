@@ -22,6 +22,7 @@ public class GetMethodTestCase {
         RestAssured.basePath = "/api/users/2";
         RequestSpecification requestSpecification = RestAssured.given();
         Response response = requestSpecification.request(Method.GET);
+        // Response response = requestSpecification.get();
         int statusCode = response.getStatusCode();
         int id = response.getBody().jsonPath().get("data.id");
         Headers headers = response.getHeaders();
@@ -39,6 +40,7 @@ public class GetMethodTestCase {
         RestAssured.baseURI = "https://reqres.in";
         RequestSpecification requestSpecification = RestAssured.given();
         Response response = requestSpecification.request(Method.GET, "/api/users/2");
+        // Response response = requestSpecification.get("/api/users/2");
         int statusCode = response.getStatusCode();
         int id = response.getBody().jsonPath().get("data.id");
         String responseBody = response.getBody().asString();
