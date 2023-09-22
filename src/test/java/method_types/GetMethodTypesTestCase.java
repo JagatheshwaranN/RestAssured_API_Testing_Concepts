@@ -1,4 +1,4 @@
-package http_methods.traditional_style;
+package method_types;
 
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
