@@ -6,6 +6,11 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @restapi
+ * @post
+ * @dummy
+ */
 public class SimpleJsonPayloadTestCase {
 
     @Test(priority = 1)
