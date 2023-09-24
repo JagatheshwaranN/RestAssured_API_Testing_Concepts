@@ -9,13 +9,14 @@ import static org.hamcrest.Matchers.equalTo;
  * @restapi
  * @get
  */
-public class LogWhenResponseFailTestCase {
+public class LogWhenValidationFailTestCase {
 
     @Test(priority = 1)
     public void generateLogWhenValidationFail(){
         given()
         .when()
-                .log().ifValidationFails()
+                .log()
+                .ifValidationFails()
                 .get("https://reqres.in/api/users/2")
         .then()
                 .statusCode(200)
