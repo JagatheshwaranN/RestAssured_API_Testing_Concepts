@@ -35,4 +35,5 @@ public class SimpleJsonArrayPayloadTestCase {
         RestAssured.baseURI = "https://www.example.com/";
         RestAssured.given().log().all().body(jsonArray).post();
     }
+
 }
