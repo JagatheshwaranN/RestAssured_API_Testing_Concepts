@@ -1,47 +1,42 @@
-package post_payload;
+package payload;
 
-import org.json.JSONObject;
-import org.json.JSONTokener;
+
 import org.testng.annotations.Test;
 
-import java.io.FileReader;
-import java.io.IOException;
+import java.util.HashMap;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
 
 /**
  * @restapi
  * @post
  */
-public class PostMethodPayLoadUsingExternalJsonTestCase {
+public class PostMethodPayLoadUsingHashMapTestCase {
 
     @Test(priority = 1)
-    public void postUsingExternalJsonAsPayload() {
+    public void postUsingHashMapAsPayload() {
 
-        JSONObject studentData;
-
-        try (FileReader fileReader = new FileReader("src//test//resources//student_payload.json")){
-            JSONTokener jsonTokener = new JSONTokener(fileReader);
-            studentData = new JSONObject(jsonTokener);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        HashMap<String, Object> studentData = new HashMap<>();
+        studentData.put("name", "Adam");
+        studentData.put("location", "Richmond");
+        studentData.put("phone", "313-456-7890");
+        String[] courses = {"Accounts", "Commerce", "Computer Science"};
+        studentData.put("courses", courses);
 
         given()
                 .contentType("application/json")
-                .body(studentData.toString())
+                .body(studentData)
         .when()
                 .post("http://localhost:3000/students")
         .then()
                 .statusCode(201)
-                .body("name", equalTo("Adam Smith"))
+                .body("name", equalTo("Adam"))
                 .body("location", equalTo("Richmond"))
                 .body("phone", equalTo("313-456-7890"))
                 .body("courses[0]", equalTo("Accounts"))
                 .body("courses[1]", equalTo("Commerce"))
                 .body("courses[2]", equalTo("Computer Science"))
-                .header("Content-Type", "application/json; charset=utf-8")
                 .log().all();
 
 

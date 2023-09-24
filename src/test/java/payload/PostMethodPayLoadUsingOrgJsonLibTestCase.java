@@ -1,4 +1,4 @@
-package post_payload;
+package payload;
 
 import org.json.JSONObject;
 import org.testng.annotations.Test;

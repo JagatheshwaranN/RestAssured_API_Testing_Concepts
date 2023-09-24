@@ -1,4 +1,4 @@
-package post_payload;
+package payload;
 
 import org.testng.annotations.Test;
 import pojo.Student;
