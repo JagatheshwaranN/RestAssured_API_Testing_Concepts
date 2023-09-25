@@ -1,4 +1,4 @@
-package scenarios;
+package cookies_headers;
 
 import io.restassured.config.HeaderConfig;
 import io.restassured.config.RestAssuredConfig;
