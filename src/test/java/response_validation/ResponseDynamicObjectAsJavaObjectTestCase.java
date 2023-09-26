@@ -11,19 +11,17 @@ import static io.restassured.RestAssured.given;
 public class ResponseDynamicObjectAsJavaObjectTestCase {
 
     @Test(priority = 1)
-    public void extractResponseJsonObjectAsJavaObjTest(){
+    public void extractResponseDynamicObjectAsJavaObjTest(){
 
         Response response = given()
                 .when()
                 .get("http://localhost:3000/students");
         Object responseObject = response.as(Object.class);
 
-        if(responseObject instanceof List){
-            List responseAsList = (List)responseObject;
+        if(responseObject instanceof List<?> responseAsList){
             System.out.println(responseAsList.size());
         }
-        if(responseObject instanceof Map){
-            Map responseAsMap = (Map)responseObject;
+        if(responseObject instanceof Map<?,?> responseAsMap){
             responseAsMap.entrySet().forEach(System.out::println);
         }
     }
