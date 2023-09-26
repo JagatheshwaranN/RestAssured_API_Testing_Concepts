@@ -1,4 +1,4 @@
-package chaining;
+package chaining.testng;
 
 import com.github.javafaker.Faker;
 import io.restassured.response.ValidatableResponse;

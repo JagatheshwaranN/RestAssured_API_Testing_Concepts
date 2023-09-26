@@ -3,22 +3,22 @@
 <suite name="Suite">
     <test name="API Chaining Test1">
         <classes>
-            <class name="chaining.CreateStudentTestCase" />
+            <class name="chaining.testng.CreateStudentTestCase" />
         </classes>
     </test>
     <test name="API Chaining Test2">
         <classes>
-            <class name="chaining.GetStudentTestCase" />
+            <class name="chaining.testng.GetStudentTestCase" />
         </classes>
     </test>
     <test name="API Chaining Test3">
         <classes>
-            <class name="chaining.UpdateStudentTestCase" />
+            <class name="chaining.testng.UpdateStudentTestCase" />
         </classes>
     </test>
     <test name="API Chaining Test4">
         <classes>
-            <class name="chaining.DeleteStudentTestCase" />
+            <class name="chaining.testng.DeleteStudentTestCase" />
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

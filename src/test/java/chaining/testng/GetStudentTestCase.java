@@ -1,4 +1,4 @@
-package chaining;
+package chaining.testng;
 
 import io.restassured.response.ValidatableResponse;
 import org.testng.Assert;
