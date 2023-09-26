@@ -7,16 +7,16 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class ResponseExtractionAsJavaObjectTestCase {
+public class ResponseObjectAsJavaObjectTestCase {
 
     @Test(priority = 1)
-    public void extractResponseAsJavaObjTest(){
+    public void extractResponseJsonObjectAsJavaObjTest(){
 
-        Map<String, Object> response =
-                given()
+        Map<String, Object> response = given()
                 .when()
-                        .get("http://localhost:3000/students/1")
-                        .as(new TypeRef<Map<String, Object>>() {});
+                .get("http://localhost:3000/students/1")
+                .as(new TypeRef<>() {
+                });
 
         String name = (String) response.get("name");
         System.out.println(name);
