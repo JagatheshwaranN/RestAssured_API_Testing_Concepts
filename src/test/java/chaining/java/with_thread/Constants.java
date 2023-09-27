@@ -1,4 +1,4 @@
-package chaining.java;
+package chaining.java.with_thread;
 
 public interface Constants {
 

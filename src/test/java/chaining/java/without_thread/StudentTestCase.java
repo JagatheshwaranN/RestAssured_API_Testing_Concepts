@@ -1,4 +1,4 @@
-package chaining.java;
+package chaining.java.without_thread;
 
 import com.github.javafaker.Faker;
 import io.restassured.response.ValidatableResponse;

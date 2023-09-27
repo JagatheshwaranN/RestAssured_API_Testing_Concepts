@@ -1,4 +1,4 @@
-package chaining.java;
+package chaining.java.without_thread;
 
 import java.util.LinkedHashMap;
 
