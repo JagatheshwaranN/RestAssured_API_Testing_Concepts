@@ -14,12 +14,13 @@ public class DeserializationTestCase {
     public void deserializeDemo() {
 
         // Deserialization - Conversion of JSON into POJO Object
-        String studentJson = "{\n" +
-                "  \"name\" : \"Adam\",\n" +
-                "  \"location\" : \"Richmond\",\n" +
-                "  \"phone\" : \"313-456-7890\",\n" +
-                "  \"courses\" : [ \"Accounts\", \"Commerce\", \"Computer Science\" ]\n" +
-                "}";
+        String studentJson = """
+                {
+                  "name" : "Adam",
+                  "location" : "Richmond",
+                  "phone" : "313-456-7890",
+                  "courses" : [ "Accounts", "Commerce", "Computer Science" ]
+                }""";
 
         ObjectMapper objectMapper = new ObjectMapper();
         try {

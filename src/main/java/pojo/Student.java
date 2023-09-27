@@ -3,10 +3,21 @@ package pojo;
 
 public class Student {
 
+
+       int id;
        String name;
        String location;
        String phone;
        String[] courses;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
