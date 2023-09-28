@@ -1,4 +1,4 @@
-package response_validation;
+package response_validation.java_collection;
 
 import io.restassured.response.Response;
 import org.testng.annotations.Test;

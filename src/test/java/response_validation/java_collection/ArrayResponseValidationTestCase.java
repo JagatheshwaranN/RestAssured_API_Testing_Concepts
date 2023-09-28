@@ -1,4 +1,4 @@
-package response_validation;
+package response_validation.java_collection;
 
 import static io.restassured.RestAssured.*;
 

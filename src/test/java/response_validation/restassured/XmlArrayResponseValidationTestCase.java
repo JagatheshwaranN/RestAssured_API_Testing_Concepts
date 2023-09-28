@@ -1,4 +1,4 @@
-package response_validation;
+package response_validation.restassured;
 
 import io.restassured.path.xml.XmlPath;
 import io.restassured.response.ValidatableResponse;
