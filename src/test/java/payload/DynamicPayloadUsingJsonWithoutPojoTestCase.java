@@ -32,6 +32,7 @@ public class DynamicPayloadUsingJsonWithoutPojoTestCase {
             without POJO, we can dynamically add / remove fields in the JSON.
         */
         address.put("place", "23rd Jefferson St");
+        // address.remove("place");
         String updatedJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(address);
         System.out.println(updatedJson);
 
