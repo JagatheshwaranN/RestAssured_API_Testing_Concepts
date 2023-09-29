@@ -1,28 +1,26 @@
 package payload;
 
-
 import org.testng.annotations.Test;
+import pojo.Student;
 
-import java.util.HashMap;
-
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 /**
  * @restapi
  * @post
  */
-public class PostMethodPayLoadUsingHashMapTestCase {
+public class PayloadUsingPojoTestCase {
 
     @Test(priority = 1)
-    public void postUsingHashMapAsPayload() {
+    public void postUsingPojoAsPayload() {
 
-        HashMap<String, Object> studentData = new HashMap<>();
-        studentData.put("name", "Adam");
-        studentData.put("location", "Richmond");
-        studentData.put("phone", "313-456-7890");
-        String[] courses = {"Accounts", "Commerce", "Computer Science"};
-        studentData.put("courses", courses);
+       Student studentData = new Student();
+       studentData.setName("Adam");
+       studentData.setLocation("Richmond");
+       studentData.setPhone("313-456-7890");
+       String[] courses = {"Accounts", "Commerce", "Computer Science"};
+       studentData.setCourses(courses);
 
         given()
                 .contentType("application/json")
@@ -37,6 +35,7 @@ public class PostMethodPayLoadUsingHashMapTestCase {
                 .body("courses[0]", equalTo("Accounts"))
                 .body("courses[1]", equalTo("Commerce"))
                 .body("courses[2]", equalTo("Computer Science"))
+                .header("Content-Type", "application/json; charset=utf-8")
                 .log().all();
 
 

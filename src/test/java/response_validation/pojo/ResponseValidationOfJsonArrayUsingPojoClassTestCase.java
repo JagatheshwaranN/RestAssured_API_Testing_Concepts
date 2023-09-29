@@ -32,7 +32,7 @@ public class ResponseValidationOfJsonArrayUsingPojoClassTestCase {
 
         List<Address> response =
                 given()
-                        .when()
+                .when()
                         .get("http://localhost:3000/addresses")
                         .as(new TypeRef<List<Address>>(){});
 

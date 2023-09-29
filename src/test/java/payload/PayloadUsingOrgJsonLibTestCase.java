@@ -10,7 +10,7 @@ import static org.hamcrest.Matchers.equalTo;
  * @restapi
  * @post
  */
-public class PostMethodPayLoadUsingOrgJsonLibTestCase {
+public class PayloadUsingOrgJsonLibTestCase {
 
     @Test(priority = 1)
     public void postUsingOrgJsonAsPayload() {

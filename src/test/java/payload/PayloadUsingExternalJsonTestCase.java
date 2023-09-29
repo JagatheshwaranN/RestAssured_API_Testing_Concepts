@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.equalTo;
  * @restapi
  * @post
  */
-public class PostMethodPayLoadUsingExternalJsonTestCase {
+public class PayloadUsingExternalJsonTestCase {
 
     @Test(priority = 1)
     public void postUsingExternalJsonAsPayload() {
