@@ -14,15 +14,18 @@ import static io.restassured.RestAssured.given;
  * @restapi
  * @post
  */
-public class PayloadUsingExternalJsonAndPojoTestCase {
+public class DynamicPayloadUsingJsonAndPojoTestCase {
 
     @Test(priority = 1)
-    public void postUsingJsonAndPojoWithJacksonAsPayload() throws IOException {
+    public void postUsingJsonAndPojoWithJacksonAsDynamicPayload() throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
         Address address = objectMapper.readValue(new File("src//test//resources//address.json"), Address.class);
         System.out.println(address.getCity());
         address.setCity("San Francisco");
+
+        String updatedJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(address);
+        System.out.println(updatedJson);
 
         given()
                 .contentType(ContentType.JSON)
