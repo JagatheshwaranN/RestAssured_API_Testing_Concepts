@@ -2,16 +2,12 @@ package pojo;
 
 import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 
-import java.util.List;
-
 @JsonIncludeProperties(value = {"city", "state", "country"})
 public class Address5 {
 
     private String city;
 
     private int zipcode;
-
-    private List<String> landmark;
 
     private String state;
 
@@ -31,14 +27,6 @@ public class Address5 {
 
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
-    }
-
-    public List<String> getLandmark() {
-        return landmark;
-    }
-
-    public void setLandmark(List<String> landmark) {
-        this.landmark = landmark;
     }
 
     public String getState() {
