@@ -21,7 +21,7 @@ public class DynamicPayloadUsingJsonWithoutPojoTestCase {
     public void postUsingJsonWithoutPojoByJacksonAsDynamicPayload() throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        Map<String, Object> address = objectMapper.readValue(new File("src//test//resources//address.json"), new TypeReference<Map<String, Object>>() {
+        Map<String, Object> address = objectMapper.readValue(new File("src//test//resources//address.json"), new TypeReference<>() {
         });
         System.out.println(address.get("city"));
         address.put("city", "San Francisco");
