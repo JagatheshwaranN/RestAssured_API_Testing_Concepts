@@ -1,0 +1,11 @@
+{
+  "id": 4,
+  "name": "Adam Smith",
+  "location": "Richmond",
+  "phone": "313-456-7890",
+  "courses": [
+    "Accounts",
+    "Commerce",
+    "Computer Science"
+  ]
+}

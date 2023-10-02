@@ -156,5 +156,11 @@
             <artifactId>async-http-client</artifactId>
             <version>2.12.3</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.networknt/json-schema-validator -->
+        <dependency>
+            <groupId>com.networknt</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>1.0.87</version>
+        </dependency>
     </dependencies>
 </project>

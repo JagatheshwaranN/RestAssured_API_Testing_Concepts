@@ -1,4 +1,4 @@
-package schema_validation;
+package schema_validation.restassured;
 
 import io.restassured.module.jsv.JsonSchemaValidator;
 import org.testng.annotations.Test;

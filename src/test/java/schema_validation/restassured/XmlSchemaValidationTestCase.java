@@ -1,4 +1,4 @@
-package schema_validation;
+package schema_validation.restassured;
 
 import io.restassured.matcher.RestAssuredMatchers;
 import org.testng.annotations.Test;
