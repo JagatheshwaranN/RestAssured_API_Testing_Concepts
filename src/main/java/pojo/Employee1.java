@@ -6,9 +6,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Employee1 {
 
     private int id;
+
     private String name;
+
     private String location;
+
     private String phone;
+    
     private String address;
 
     public int getId() {

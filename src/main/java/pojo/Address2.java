@@ -6,8 +6,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class Address2 {
 
     private String city;
+
     private String state;
+
     private int zipcode;
+
     private String country;
 
     public String getCity() {

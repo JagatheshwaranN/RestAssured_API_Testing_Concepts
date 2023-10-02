@@ -3,9 +3,13 @@ package pojo;
 public class Employee {
 
     private int id;
+
     private String name;
+
     private String location;
+
     private String phone;
+
     private Address address;
 
     public int getId() {

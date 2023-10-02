@@ -3,8 +3,11 @@ package pojo;
 public class Address {
 
     private String city;
+
     private String state;
+
     private String zipcode;
+
     private String country;
 
     public String getCity() {
