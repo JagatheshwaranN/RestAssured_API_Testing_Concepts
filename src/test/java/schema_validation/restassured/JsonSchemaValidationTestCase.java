@@ -23,7 +23,8 @@ public class JsonSchemaValidationTestCase {
                 .get("http://localhost:3000/students/1")
         .then()
                 .statusCode(200)
-                .assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("json_schema.json"));
+                .assertThat()
+                .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("json_schema.json"));
     }
 
     @Test(priority = 2)
@@ -36,7 +37,8 @@ public class JsonSchemaValidationTestCase {
                 .get("http://localhost:3000/students/1")
         .then()
                 .statusCode(200)
-                .assertThat().body(JsonSchemaValidator.matchesJsonSchema(jsonSchema));
+                .assertThat()
+                .body(JsonSchemaValidator.matchesJsonSchema(jsonSchema));
     }
 
     @Test(priority = 3)
@@ -49,7 +51,8 @@ public class JsonSchemaValidationTestCase {
                 .get("http://localhost:3000/students/1")
         .then()
                 .statusCode(200)
-                .assertThat().body(JsonSchemaValidator.matchesJsonSchema(jsonSchema));
+                .assertThat()
+                .body(JsonSchemaValidator.matchesJsonSchema(jsonSchema));
     }
 
 }

@@ -13,7 +13,7 @@ public class AsyncRequestTestCase {
     public void asyncRequest(){
 
         try {
-        Future<Response> responseFuture =
+            Future<Response> responseFuture =
                 Dsl.asyncHttpClient()
                 .prepareGet("https://reqres.in/api/users/2?delay=5")
                 .execute();
