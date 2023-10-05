@@ -15,7 +15,7 @@ public class EvaluateJsonPathUsingPredicateTestCase {
 
         try(InputStream jsonFile = new FileInputStream("src//test//resources//book_store.json")){
 
-            List<Object> prices = JsonPath.parse(jsonFile).read("$.store.book[?(@.price <10)].price");
+            List<Object> prices = JsonPath.parse(jsonFile).read("$.store.book[?(@.price < 10)].price");
             prices.forEach(System.out::println);
         }
     }
@@ -25,7 +25,7 @@ public class EvaluateJsonPathUsingPredicateTestCase {
 
         try(InputStream jsonFile = new FileInputStream("src//test//resources//book_store.json")){
 
-            List<Object> books = JsonPath.parse(jsonFile).read("$.store.book[?(@.price <10 && @.category=='fiction')]");
+            List<Object> books = JsonPath.parse(jsonFile).read("$.store.book[?(@.price < 10 && @.category=='fiction')]");
             books.forEach(System.out::println);
         }
     }
