@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+/*
+    We can also use @Data annotation to generate the Getters and Setters along with additional
+    methods.
+*/
 @Getter
 @Setter
 public class Book {

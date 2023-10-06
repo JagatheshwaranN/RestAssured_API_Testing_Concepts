@@ -3,7 +3,6 @@ package pojo;
 
 public class Student {
 
-
        int id;
 
        String name;
@@ -13,7 +12,6 @@ public class Student {
        String phone;
 
        String[] courses;
-
 
     public int getId() {
         return id;
