@@ -1,4 +1,4 @@
-package response_validation.pojo;
+package response_validation.jackson_annotation;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
