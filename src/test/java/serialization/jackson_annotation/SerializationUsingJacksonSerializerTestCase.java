@@ -4,9 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.testng.annotations.Test;
-import pojo.jackson.CustomSerializer;
-import pojo.jackson.Devices;
-import pojo.jackson.JacksonSerialize;
+import pojo.jackson.serialize.CustomSerializer;
+import pojo.jackson.serialize.Devices;
+import pojo.jackson.serialize.JacksonSerialize;
 
 import java.util.List;
 

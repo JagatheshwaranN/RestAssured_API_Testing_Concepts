@@ -3,7 +3,7 @@ package serialization.jackson_annotation;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.testng.annotations.Test;
-import pojo.jackson.JacksonAnyGetter;
+import pojo.jackson.serialize.JacksonAnyGetter;
 
 import java.util.HashMap;
 import java.util.Map;

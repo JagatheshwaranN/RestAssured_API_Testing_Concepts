@@ -1,14 +1,13 @@
-package pojo.jackson;
+package pojo.jackson.serialize;
 
-import com.fasterxml.jackson.annotation.JsonRawValue;
+import com.fasterxml.jackson.annotation.JsonValue;
 
-public class JacksonRawValue {
+public class JacksonValue {
 
     private String name;
 
     private int id;
 
-    @JsonRawValue
     private String email;
 
     public String getName() {
@@ -33,6 +32,11 @@ public class JacksonRawValue {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @JsonValue
+    public String toString(){
+        return "["+this.id+" , "+ this.name+" , "+this.email+"]";
     }
 
 }

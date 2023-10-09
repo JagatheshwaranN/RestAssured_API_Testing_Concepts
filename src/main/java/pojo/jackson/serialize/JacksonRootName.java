@@ -1,4 +1,4 @@
-package pojo.jackson;
+package pojo.jackson.serialize;
 
 import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.fasterxml.jackson.annotation.JsonRootName;

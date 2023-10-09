@@ -1,4 +1,4 @@
-package pojo.jackson;
+package pojo.jackson.serialize;
 
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

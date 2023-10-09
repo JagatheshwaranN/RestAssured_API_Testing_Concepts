@@ -1,4 +1,4 @@
-package pojo.jackson;
+package pojo.jackson.serialize;
 
 public class Devices {
 

@@ -1,8 +1,10 @@
-package pojo.jackson;
+package pojo.jackson.serialize;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-public class JacksonValue {
+// @JsonPropertyOrder(alphabetic = true)
+@JsonPropertyOrder({"id", "name", "email"})
+public class JacksonPropertyOrder {
 
     private String name;
 
@@ -33,10 +35,4 @@ public class JacksonValue {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    @JsonValue
-    public String toString(){
-        return "["+this.id+" , "+ this.name+" , "+this.email+"]";
-    }
-
 }
