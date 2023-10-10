@@ -1,15 +1,23 @@
 package pojo.jackson.serialize;
 
-import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.annotation.JsonGetter;
 
-@JsonRootName(value = "employee")
-public class JacksonRootName {
-
-    private String name;
+public class JacksonGetter {
 
     private int id;
 
+    private String name;
+
     private String email;
+
+    @JsonGetter(value = "empId")
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -17,14 +25,6 @@ public class JacksonRootName {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getEmail() {
