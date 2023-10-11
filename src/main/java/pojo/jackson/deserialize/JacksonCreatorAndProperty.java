@@ -1,5 +1,6 @@
 package pojo.jackson.deserialize;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JacksonCreatorAndProperty {
@@ -10,6 +11,7 @@ public class JacksonCreatorAndProperty {
 
     public  String email;
 
+    @JsonCreator
     public JacksonCreatorAndProperty(
             // @JsonSetter("empId")
             @JsonProperty("empId")
