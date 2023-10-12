@@ -10,13 +10,14 @@ import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
 
-public class GetMethodUsingJavaLibraryTest {
+public class GetMethodUsingJavaNativeLibraryTest {
 
     @Test(priority = 1)
-    public void getMethodUsingJavaLibrary() {
+    public void getMethodUsingJavaNativeLibrary() {
 
         try {
-            URL url = URI.create("https://reqres.in/api/users/2").toURL();
+            // https://dummy.restapiexample.com/api/v1/employee/{id}
+            URL url = URI.create("https://dummy.restapiexample.com/employee/7968").toURL();
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
@@ -28,14 +29,13 @@ public class GetMethodUsingJavaLibraryTest {
 
             InputStream inputStream = connection.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String line;
-            StringBuffer responseBody = new StringBuffer();
-            while((line=bufferedReader.readLine())!= null){
+            StringBuilder responseBody = new StringBuilder();
+            while((line = bufferedReader.readLine()) != null){
                 responseBody.append(line);
             }
-            System.out.println(responseBody);
+            System.out.println("Response Body :"+responseBody);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
