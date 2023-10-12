@@ -17,7 +17,7 @@ public class GetMethodUsingJavaNativeLibraryTest {
 
         try {
             // https://dummy.restapiexample.com/api/v1/employee/{id}
-            URL url = URI.create("https://dummy.restapiexample.com/employee/7968").toURL();
+            URL url = URI.create("https://reqres.in/api/users/2").toURL();
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
