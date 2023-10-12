@@ -6,14 +6,21 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.testng.annotations.Test;
 
-public class GetMethodUsingUniRestTest {
+public class PostMethodUsingUniRestTest {
 
     @Test(priority = 1)
-    public void getMethodUsingUniRest() {
+    public void postMethodUsingUniRest() {
 
         try {
+            String payloadJson = """ 
+                                {
+                                   "name":"John",
+                                   "job":"Tester"
+                                  }
+                                """;
+
             HttpResponse<JsonNode> response =
-                    Unirest.get("https://reqres.in/api/users/2").asJson();
+                    Unirest.post("https://reqres.in/api/users").body(payloadJson).asJson();
             int statusCode = response.getStatus();
             String statusMessage = response.getStatusText();
             String responseBody = String.valueOf(response.getBody());

@@ -13,7 +13,7 @@ public class DeleteMethodUsingJavaNativeLibraryTest {
     public void deleteMethodUsingJavaNativeLibrary() {
 
         try {
-            URL url = URI.create("https://dummy.restapiexample.com/api/v1/delete/7968").toURL();
+            URL url = URI.create("https://reqres.in/api/users/2").toURL();
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("DELETE");
             connection.connect();

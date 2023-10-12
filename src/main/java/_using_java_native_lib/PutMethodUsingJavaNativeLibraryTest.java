@@ -13,16 +13,15 @@ public class PutMethodUsingJavaNativeLibraryTest {
     public void putMethodUsingJavaNativeLibrary(){
 
         try {
-            URL url = URI.create("https://dummy.restapiexample.com/api/v1/update/7968").toURL();
+            URL url = URI.create("https://reqres.in/api/users/2").toURL();
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("PUT");
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setDoOutput(true);
             String payloadJson = """ 
                                 {
-                                   "name":"Automate",
-                                   "salary":"120000",
-                                   "age":"29"
+                                   "name":"John",
+                                   "job":"Automation Tester"
                                   }
                                 """;
             byte[] payload = payloadJson.getBytes();

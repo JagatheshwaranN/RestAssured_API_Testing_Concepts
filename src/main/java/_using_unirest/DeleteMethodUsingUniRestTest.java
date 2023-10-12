@@ -6,14 +6,14 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.testng.annotations.Test;
 
-public class GetMethodUsingUniRestTest {
+public class DeleteMethodUsingUniRestTest {
 
     @Test(priority = 1)
-    public void getMethodUsingUniRest() {
+    public void deleteMethodUsingUniRest() {
 
         try {
             HttpResponse<JsonNode> response =
-                    Unirest.get("https://reqres.in/api/users/2").asJson();
+                    Unirest.delete("https://reqres.in/api/users/2").asJson();
             int statusCode = response.getStatus();
             String statusMessage = response.getStatusText();
             String responseBody = String.valueOf(response.getBody());

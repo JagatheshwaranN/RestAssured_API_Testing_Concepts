@@ -13,16 +13,15 @@ public class PostMethodUsingJavaNativeLibraryTest {
     public void postMethodUsingJavaNativeLibrary(){
 
         try {
-            URL url = URI.create("https://dummy.restapiexample.com/api/v1/create").toURL();
+            URL url = URI.create("https://reqres.in/api/users").toURL();
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setDoOutput(true);
             String payloadJson = """ 
                                 {
-                                   "name":"Automate",
-                                   "salary":"120000",
-                                   "age":"25"
+                                   "name":"John",
+                                   "job":"Tester"
                                   }
                                 """;
             byte[] payload = payloadJson.getBytes();
