@@ -37,10 +37,10 @@ public class PostMethodUsingJavaNativeLibraryTest {
             InputStream inputStream = connection.getInputStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            String line;
+            String data;
             StringBuilder responseBody = new StringBuilder();
-            while((line = bufferedReader.readLine()) != null){
-                responseBody.append(line);
+            while((data = bufferedReader.readLine()) != null){
+                responseBody.append(data);
             }
             System.out.println("Response Body :"+responseBody);
 
@@ -48,4 +48,5 @@ public class PostMethodUsingJavaNativeLibraryTest {
             throw new RuntimeException(e);
         }
     }
+
 }

@@ -15,7 +15,7 @@ public class PutMethodUsingUniRestTest {
             String payloadJson = """ 
                                 {
                                    "name":"John",
-                                   "job":"Tester"
+                                   "job":"Automation Tester"
                                   }
                                 """;
 
