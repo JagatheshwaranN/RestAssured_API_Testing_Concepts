@@ -1,4 +1,4 @@
-package _using_apache_httpclient;
+package _using_apache_httpclient.traditional;
 
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
