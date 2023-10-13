@@ -4,7 +4,6 @@ import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.ClassicHttpResponse;
-import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.testng.annotations.Test;
 
@@ -14,7 +13,7 @@ import java.util.Arrays;
 public class GetMethodUsingApacheHttpClientTest {
 
     @Test(priority = 1)
-    public void getMethodUsingApacheHttpClientApproach1() throws IOException, ParseException {
+    public void getMethodUsingApacheHttpClientApproach1() throws IOException {
 
         HttpClient httpClient = HttpClients.createDefault();
         HttpGet request = new HttpGet("https://reqres.in/api/users/2");
@@ -30,5 +29,21 @@ public class GetMethodUsingApacheHttpClientTest {
         });
         System.out.println(Arrays.toString(response.getHeaders()));
     }
+
+    @Test(priority = 2)
+    public void getMethodUsingApacheHttpClientApproach2() throws IOException {
+
+        HttpClient httpClient = HttpClients.createDefault();
+        HttpGet request = new HttpGet("https://reqres.in/api/users/2");
+        APIResponse response = httpClient.execute(request, httpResponse -> new APIResponse(EntityUtils.toString(httpResponse.getEntity()), httpResponse));
+        System.out.println(response.responseContainer.getCode());
+        System.out.println(response.responseContainer.getReasonPhrase());
+        System.out.println(response.responseBody);
+        System.out.println(Arrays.toString(response.responseContainer.getHeaders()));
+    }
+
+    record APIResponse(String responseBody, ClassicHttpResponse responseContainer) {
+    }
+
 }
 
