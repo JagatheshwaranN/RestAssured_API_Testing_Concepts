@@ -2,8 +2,6 @@ package _using_apache_httpclient.traditional;
 
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
-import org.apache.hc.client5.http.fluent.Request;
-import org.apache.hc.client5.http.fluent.Response;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
@@ -45,13 +43,6 @@ public class GetMethodUsingApacheHttpClientTest {
     }
 
     record APIResponse(String responseBody, ClassicHttpResponse responseContainer) {
-    }
-
-    @Test(priority = 3)
-    public void getMethodUsingApacheHttpClientFluent() throws IOException {
-
-        Response response = Request.get("https://reqres.in/api/users/2").execute();
-        System.out.println(response.returnContent().asString());
     }
 
 }
