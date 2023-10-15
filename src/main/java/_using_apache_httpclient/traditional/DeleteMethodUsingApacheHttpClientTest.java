@@ -18,7 +18,8 @@ public class DeleteMethodUsingApacheHttpClientTest {
         ClassicHttpResponse response = httpClient.execute(request, httpResponse -> httpResponse);
         int statusCode = response.getCode();
         String statusMessage = response.getReasonPhrase();
-        System.out.println("Response Status Code    :"+statusCode);
-        System.out.println("Response Status Message :"+statusMessage);
+        System.out.println("Response Status Code    :" + statusCode);
+        System.out.println("Response Status Message :" + statusMessage);
     }
+
 }
