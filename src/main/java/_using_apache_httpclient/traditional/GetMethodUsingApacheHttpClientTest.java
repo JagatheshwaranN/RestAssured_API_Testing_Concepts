@@ -36,9 +36,9 @@ public class GetMethodUsingApacheHttpClientTest {
         HttpClient httpClient = HttpClients.createDefault();
         HttpGet request = new HttpGet("https://reqres.in/api/users/2");
         APIResponse response = httpClient.execute(request, httpResponse -> new APIResponse(EntityUtils.toString(httpResponse.getEntity()), httpResponse));
-        System.out.println(response.responseContainer.getCode());
-        System.out.println(response.responseContainer.getReasonPhrase());
-        System.out.println(response.responseBody);
+        System.out.println("Response Status Code    :" + response.responseContainer.getCode());
+        System.out.println("Response Status Message :" + response.responseContainer.getReasonPhrase());
+        System.out.println("Response Body :" + response.responseBody);
         System.out.println(Arrays.toString(response.responseContainer.getHeaders()));
     }
 
