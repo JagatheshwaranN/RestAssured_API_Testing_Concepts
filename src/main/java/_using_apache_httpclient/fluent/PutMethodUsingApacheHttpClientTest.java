@@ -19,8 +19,8 @@ public class PutMethodUsingApacheHttpClientTest {
                                    "job":"Automation Tester"
                                   }
                                 """;
-        Response response = Request.put("https://reqres.in/api/users/2").
-                bodyString(payloadJson, ContentType.APPLICATION_JSON).execute();
+        Response response = Request.put("https://reqres.in/api/users/2")
+                        .bodyString(payloadJson, ContentType.APPLICATION_JSON).execute();
         APIResponse httpResponse = response.handleResponse(handler ->
                 new APIResponse(EntityUtils.toString(handler.getEntity()), handler));
         System.out.println("Response Status Code    :" + httpResponse.responseContainer.getCode());

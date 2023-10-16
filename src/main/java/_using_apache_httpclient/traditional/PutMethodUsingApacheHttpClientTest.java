@@ -32,7 +32,6 @@ public class PutMethodUsingApacheHttpClientTest {
         System.out.println("Response Body :" + response.responseBody);
     }
     record APIResponse(String responseBody, ClassicHttpResponse responseContainer){
-
     }
 
 }
