@@ -1,32 +1,25 @@
-package _using_java_native_lib;
+package _using_java_native_lib.url_connection;
 
 import org.testng.annotations.Test;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
 
-public class PutMethodUsingJavaNativeLibraryTest {
+public class GetMethodUsingJavaNativeLibraryTest {
 
     @Test(priority = 1)
-    public void putMethodUsingJavaNativeLibrary(){
+    public void getMethodUsingJavaNativeLibrary() {
 
         try {
+            // https://dummy.restapiexample.com/api/v1/employee/{id}
             URL url = URI.create("https://reqres.in/api/users/2").toURL();
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("PUT");
-            connection.setRequestProperty("Content-Type", "application/json");
-            connection.setDoOutput(true);
-            String payloadJson = """ 
-                                {
-                                   "name":"John",
-                                   "job":"Automation Tester"
-                                  }
-                                """;
-            byte[] payload = payloadJson.getBytes();
-            OutputStream outputStream = connection.getOutputStream();
-            outputStream.write(payload);
+            connection.setRequestMethod("GET");
             connection.connect();
 
             int statusCode = connection.getResponseCode();

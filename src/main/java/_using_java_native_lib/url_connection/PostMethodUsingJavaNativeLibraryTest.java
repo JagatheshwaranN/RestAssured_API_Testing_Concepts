@@ -1,4 +1,4 @@
-package _using_java_native_lib;
+package _using_java_native_lib.url_connection;
 
 import org.testng.annotations.Test;
 
