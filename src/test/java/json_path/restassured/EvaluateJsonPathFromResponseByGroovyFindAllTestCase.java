@@ -8,7 +8,7 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class EvaluateJsonPathByGroovyFindAllFromResponseTestCase {
+public class EvaluateJsonPathFromResponseByGroovyFindAllTestCase {
 
     @Test(priority = 1)
     public void evaluateJsonPathByGroovyFindAllToGetValuesOnlyBasedOnConditionFromArray() {
