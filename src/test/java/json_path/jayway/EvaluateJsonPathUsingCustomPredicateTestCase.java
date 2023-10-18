@@ -1,4 +1,4 @@
-package json_path;
+package json_path.jayway;
 
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.Predicate;
