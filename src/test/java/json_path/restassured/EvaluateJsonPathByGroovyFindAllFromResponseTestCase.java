@@ -3,37 +3,33 @@ package json_path.restassured;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class EvaluateJsonPathFromJsonFileTestCase {
+public class EvaluateJsonPathByGroovyFindAllFromResponseTestCase {
 
     @Test(priority = 1)
-    public void evaluateJsonPathToTakeOnlyValuesFromArray() throws IOException {
+    public void evaluateJsonPathByGroovyFindAllToGetValuesOnlyBasedOnConditionFromArray() {
 
         Response response =
                 given()
                 .when()
                         .get("http://localhost:3000/store");
-        List<Object> prices  = response.path("book.price");
+        List<Object> prices = response.path("book.findAll{it.category=='fiction'}.price");
         prices.forEach(System.out::println);
     }
 
     @Test(priority = 2)
-    public void evaluateJsonPathToTakeKeyValuePairFromArray() throws IOException {
+    public void evaluateJsonPathByGroovyFindAllToGetKeyValuesPairsBasedOnConditionFromArray() {
 
         Response response =
                 given()
-                        .when()
+                .when()
                         .get("http://localhost:3000/store");
-        Map<String, Object> book  = response.path("book.find{it.category=='reference'}");
-        book.entrySet().forEach(System.out::println);
+        List<Map<String, Object>> books = response.path("book.findAll{it.category=='fiction'}");
+        books.forEach(System.out::println);
     }
-
-
-
 
 }
