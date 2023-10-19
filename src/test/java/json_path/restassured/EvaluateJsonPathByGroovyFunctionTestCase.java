@@ -5,10 +5,10 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class EvaluateJsonPathFromResponseByGroovyFunctionTestCase {
+public class EvaluateJsonPathByGroovyFunctionTestCase {
 
     @Test(priority = 1)
-    public void evaluateJsonPathByGroovyMaxToGetValueBasedOnConditionFromArray() {
+    public void evaluateJsonPathByGroovyMax() {
 
         Response response =
                 given()
@@ -19,7 +19,7 @@ public class EvaluateJsonPathFromResponseByGroovyFunctionTestCase {
     }
 
     @Test(priority = 2)
-    public void evaluateJsonPathByGroovyMinToGetValueBasedOnConditionFromArray() {
+    public void evaluateJsonPathByGroovyMin() {
 
         Response response =
                 given()
@@ -30,7 +30,7 @@ public class EvaluateJsonPathFromResponseByGroovyFunctionTestCase {
     }
 
     @Test(priority = 3)
-    public void evaluateJsonPathByGroovySumToGetCalculatedValueFromArray() {
+    public void evaluateJsonPathByGroovySum() {
 
         Response response =
                 given()

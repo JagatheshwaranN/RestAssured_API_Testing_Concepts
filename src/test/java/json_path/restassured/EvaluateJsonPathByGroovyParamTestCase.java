@@ -7,10 +7,10 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
-public class EvaluateJsonPathFromResponseByGroovyParamTestCase {
+public class EvaluateJsonPathByGroovyParamTestCase {
 
     @Test(priority = 1)
-    public void evaluateJsonPathByGroovyParamToGetValuesFromArray() {
+    public void evaluateJsonPathByGroovyParam() {
 
         String category = "fiction";
 

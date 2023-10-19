@@ -8,10 +8,10 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class EvaluateJsonPathFromResponseByGroovyFindTestCase {
+public class EvaluateJsonPathByGroovyFindTestCase {
 
     @Test(priority = 1)
-    public void evaluateJsonPathByGroovyFindToGetOnlyValuesFromArray() {
+    public void evaluateJsonPathByGroovyExpression() {
 
         Response response =
                 given()
@@ -22,24 +22,24 @@ public class EvaluateJsonPathFromResponseByGroovyFindTestCase {
     }
 
     @Test(priority = 2)
-    public void evaluateJsonPathByGroovyFindToGetFirstKeyValuePairBasedOnConditionFromArray() {
+    public void evaluateJsonPathByGroovyFindType1() {
 
         Response response =
                 given()
                 .when()
                         .get("http://localhost:3000/store");
-        Map<String, Object> book  = response.path("book.find{it.category=='reference'}");
+        Map<String, Object> book  = response.path("book.find{it.category=='fiction'}");
         book.entrySet().forEach(System.out::println);
     }
 
     @Test(priority = 3)
-    public void evaluateJsonPathByGroovyFindToGetValueBasedOnConditionFromArray() {
+    public void evaluateJsonPathByGroovyFindType2() {
 
         Response response =
                 given()
                 .when()
                         .get("http://localhost:3000/store");
-        String author  = response.path("book.find{it.category=='fiction'}.author");
+        String author  = response.path("book.find{it.category=='reference'}.author");
         System.out.println(author);
     }
 
