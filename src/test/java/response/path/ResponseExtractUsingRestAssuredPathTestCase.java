@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.given;
 public class ResponseExtractUsingRestAssuredPathTestCase {
 
     @Test(priority = 1)
-    public void responseExtractUsingRestAssuredPathApproach1() {
+    public void responseExtractUsingRestAssuredPathApproach1Type1() {
 
         Response response =
                 given()
@@ -26,6 +26,18 @@ public class ResponseExtractUsingRestAssuredPathTestCase {
     }
 
     @Test(priority = 2)
+    public void responseExtractUsingRestAssuredPathApproach1Type2() {
+
+        Response response =
+                given()
+                        .when()
+                        .get("https://reqres.in/api/users/2");
+
+        String avatar_url = response.andReturn().path("data.avatar");
+        Assert.assertEquals(avatar_url, "https://reqres.in/img/faces/2-image.jpg");
+    }
+
+    @Test(priority = 3)
     public void responseExtractUsingRestAssuredPathApproach2() {
 
         ValidatableResponse response =

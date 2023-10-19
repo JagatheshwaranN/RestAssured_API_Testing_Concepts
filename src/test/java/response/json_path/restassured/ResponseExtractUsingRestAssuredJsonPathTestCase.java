@@ -1,4 +1,4 @@
-package response.json_path;
+package response.json_path.restassured;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.ValidatableResponse;
