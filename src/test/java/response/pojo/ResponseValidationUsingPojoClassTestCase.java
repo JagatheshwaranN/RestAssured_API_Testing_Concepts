@@ -1,4 +1,4 @@
-package response_validation.pojo;
+package response.pojo;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

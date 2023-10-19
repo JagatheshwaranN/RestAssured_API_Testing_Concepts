@@ -1,4 +1,4 @@
-package response_validation.restassured;
+package response.restassured;
 
 
 import org.testng.annotations.Test;
@@ -6,10 +6,10 @@ import org.testng.annotations.Test;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.*;
 
-public class ResponseValidationApproach1TestCase {
+public class ResponseValidationByHamcrestMatchersTestCase {
 
     @Test(priority = 1)
-    public void validateResponseApproach1Type1() {
+    public void validateResponseByHamcrestEqualTo() {
 
         given()
         .when()
@@ -20,7 +20,7 @@ public class ResponseValidationApproach1TestCase {
     }
 
     @Test(priority = 2)
-    public void validateResponseApproach1Type2() {
+    public void validateResponseByAssertThatAndHamcrestEqualTo() {
 
         given()
         .when()
@@ -31,4 +31,16 @@ public class ResponseValidationApproach1TestCase {
                 .and()
                 .body("books[1].title", equalTo("The Art of Cooking"));
     }
+
+    @Test(priority = 3)
+    public void validateResponseByHamcrestHasItems() {
+
+        given()
+        .when()
+                .get("http://localhost:3000/store")
+        .then()
+                .statusCode(200)
+                .body("books.title", hasItems("The Great Adventure", "The Art of Cooking"));
+    }
+
 }

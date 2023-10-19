@@ -1,4 +1,4 @@
-package response_validation.pojo;
+package response.pojo;
 
 import io.restassured.common.mapper.TypeRef;
 import org.testng.Assert;

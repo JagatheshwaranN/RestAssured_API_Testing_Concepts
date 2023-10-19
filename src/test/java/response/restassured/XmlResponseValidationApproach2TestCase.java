@@ -1,4 +1,4 @@
-package response_validation.restassured;
+package response.restassured;
 
 
 import io.restassured.response.ValidatableResponse;
