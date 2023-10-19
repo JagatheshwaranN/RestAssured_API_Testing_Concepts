@@ -1,4 +1,5 @@
-package response.restassured;
+package response.xml_path;
+
 
 import io.restassured.path.xml.XmlPath;
 import io.restassured.response.ValidatableResponse;
@@ -14,10 +15,26 @@ import static io.restassured.RestAssured.given;
  * @restapi
  * @get
  */
-public class XmlArrayResponseValidationTestCase {
+public class ResponseExtractUsingRestAssuredXmlPathTestCase {
 
     @Test(priority = 1)
-    public void arrayResponseValidation() {
+    public void responseExtractUsingRestAssuredXmlPath() {
+
+        ValidatableResponse response =
+                given()
+                .when()
+                        .get("http://restapi.adequateshop.com/api/Traveler?page=1")
+                .then()
+                        .statusCode(200);
+        Assert.assertEquals(response.extract().statusCode(), 200);
+        Assert.assertEquals(response.extract().contentType(), "application/xml; charset=utf-8");
+        Assert.assertEquals(response.extract().header("Server"), "Microsoft-IIS/10.0");
+        String travellerId = response.extract().body().xmlPath().get("TravelerinformationResponse.travelers.Travelerinformation[0].id").toString();
+        Assert.assertEquals(travellerId, "11133");
+    }
+
+    @Test(priority = 2)
+    public void responseArrayExtractUsingRestAssuredXmlPath() {
 
         ArrayList<String> travellerIds = new ArrayList<>();
         travellerIds.add("11133");
@@ -32,11 +49,11 @@ public class XmlArrayResponseValidationTestCase {
         travellerIds.add("11143");
 
         ValidatableResponse response =
-        given()
-        .when()
-                .get("http://restapi.adequateshop.com/api/Traveler?page=1")
-        .then()
-                .statusCode(200);
+                given()
+                .when()
+                        .get("http://restapi.adequateshop.com/api/Traveler?page=1")
+                .then()
+                        .statusCode(200);
 
         XmlPath xmlPath = new XmlPath(response.extract().asString());
         List<String> travellersInfo = xmlPath.getList("TravelerinformationResponse.travelers.Travelerinformation.id");
@@ -45,4 +62,5 @@ public class XmlArrayResponseValidationTestCase {
             Assert.assertEquals(travellersInfo.get(i), travellerIds.get(i));
         }
     }
+
 }
