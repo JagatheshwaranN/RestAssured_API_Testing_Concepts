@@ -1,4 +1,4 @@
-package cookies_headers;
+package cookies;
 
 import io.restassured.response.ValidatableResponse;
 import org.testng.annotations.Test;

@@ -1,4 +1,4 @@
-package schema_validation.networknt;
+package schema.networknt;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

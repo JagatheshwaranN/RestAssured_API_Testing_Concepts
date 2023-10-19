@@ -1,4 +1,4 @@
-package cookies_headers;
+package headers;
 
 import io.restassured.http.Header;
 import io.restassured.http.Headers;

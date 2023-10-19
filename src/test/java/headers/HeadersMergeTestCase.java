@@ -1,4 +1,4 @@
-package cookies_headers;
+package headers;
 
 import io.restassured.config.HeaderConfig;
 import io.restassured.config.RestAssuredConfig;
