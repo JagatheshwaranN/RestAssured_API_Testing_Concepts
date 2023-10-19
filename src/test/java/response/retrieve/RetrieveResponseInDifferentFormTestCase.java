@@ -4,9 +4,9 @@ import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
@@ -34,7 +34,7 @@ public class RetrieveResponseInDifferentFormTestCase {
 
         Response response =
                 given()
-                        .when()
+                .when()
                         .get("https://reqres.in/api/users/2");
 
         String responseAsString = response.asPrettyString();
@@ -42,16 +42,29 @@ public class RetrieveResponseInDifferentFormTestCase {
     }
 
     @Test(priority = 3)
-    public void retrieveResponseAsInputStream() throws IOException {
+    public void retrieveResponseAsInputStream() {
 
         Response response =
                 given()
-                        .when()
+                .when()
                         .get("https://reqres.in/api/users/2");
 
         InputStream responseAsStream = response.asInputStream();
         String responseFromInputStream = new BufferedReader((new InputStreamReader(responseAsStream))).lines().collect(Collectors.joining());
         System.out.println(responseFromInputStream);
+    }
+
+    @Test(priority = 4)
+    public void retrieveResponseAsByteArray() {
+
+        Response response =
+                given()
+                .when()
+                        .get("https://reqres.in/api/users/2");
+
+        byte[] responseAsBytes = response.asByteArray();
+        String responseFromBytes = new String(responseAsBytes, StandardCharsets.UTF_8);
+        System.out.println(responseFromBytes);
     }
 
 }
