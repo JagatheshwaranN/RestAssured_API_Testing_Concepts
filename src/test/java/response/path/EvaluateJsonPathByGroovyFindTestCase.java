@@ -1,4 +1,4 @@
-package json_path.restassured;
+package response.path;
 
 import io.restassured.response.Response;
 import org.testng.annotations.Test;

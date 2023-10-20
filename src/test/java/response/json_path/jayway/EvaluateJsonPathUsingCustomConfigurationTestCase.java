@@ -1,4 +1,4 @@
-package json_path.jayway;
+package response.json_path.jayway;
 
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
