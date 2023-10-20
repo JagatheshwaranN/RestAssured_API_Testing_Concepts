@@ -56,7 +56,8 @@ public class RetrieveValidatableResponseInDifferentFormTestCase {
                         .statusCode(200);
 
         InputStream responseAsStream = response.extract().asInputStream();
-        String responseFromInputStream = new BufferedReader((new InputStreamReader(responseAsStream))).lines().collect(Collectors.joining());
+        String responseFromInputStream = new BufferedReader(new InputStreamReader(responseAsStream))
+                .lines().collect(Collectors.joining());
         System.out.println(responseFromInputStream);
     }
 

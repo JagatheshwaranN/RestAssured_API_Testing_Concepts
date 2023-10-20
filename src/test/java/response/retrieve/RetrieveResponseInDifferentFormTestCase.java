@@ -50,7 +50,8 @@ public class RetrieveResponseInDifferentFormTestCase {
                         .get("https://reqres.in/api/users/2");
 
         InputStream responseAsStream = response.asInputStream();
-        String responseFromInputStream = new BufferedReader((new InputStreamReader(responseAsStream))).lines().collect(Collectors.joining());
+        String responseFromInputStream = new BufferedReader(new InputStreamReader(responseAsStream))
+                .lines().collect(Collectors.joining());
         System.out.println(responseFromInputStream);
     }
 

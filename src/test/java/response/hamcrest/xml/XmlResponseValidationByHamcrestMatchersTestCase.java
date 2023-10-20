@@ -43,19 +43,17 @@ public class XmlResponseValidationByHamcrestMatchersTestCase {
         .then()
                 .statusCode(200)
                 .body(hasXPath("/TravelerinformationResponse/page"),containsString("1"));
-
     }
 
     @Test(priority = 4)
     public void validateResponseByHamcrestHasXpathApproach2() {
 
         given()
-                .when()
+        .when()
                 .get("http://restapi.adequateshop.com/api/Traveler?page=1")
-                .then()
+        .then()
                 .statusCode(200)
                 .body(hasXPath("/TravelerinformationResponse/page[text()='1']"));
-
     }
 
 }
