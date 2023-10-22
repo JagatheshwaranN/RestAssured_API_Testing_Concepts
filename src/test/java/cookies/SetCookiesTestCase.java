@@ -14,8 +14,7 @@ public class SetCookiesTestCase {
         given().
                 cookie("test", "123")
         .when()
-                .get("https://www.google.com/");
-
+                .get("http://www.example.com/");
     }
 
     @Test(priority = 2)
@@ -27,7 +26,7 @@ public class SetCookiesTestCase {
         given().
                 cookies(cookies)
         .when()
-                .get("https://www.google.com/");
+                .get("http://www.example.com/");
 
     }
 
