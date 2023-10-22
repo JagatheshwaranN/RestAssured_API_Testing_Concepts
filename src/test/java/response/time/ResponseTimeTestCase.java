@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.lessThan;
 
 public class ResponseTimeTestCase {
 
@@ -63,6 +64,18 @@ public class ResponseTimeTestCase {
         long getTime = response.extract().response().getTimeIn(TimeUnit.SECONDS);
         System.out.println("Response Time from Time     : " + time);
         System.out.println("Response Time from Get Time : " + getTime);
+    }
+
+    @Test(priority = 5)
+    public void verifyValidatableResponseTimeByHamcrestMatchers() {
+
+        ValidatableResponse response =
+                given().
+                        when()
+                        .get("https://reqres.in/api/users/2")
+                        .then()
+                        .time(lessThan(2000L));
+        System.out.println("Response  : " + response.extract().asString());
     }
 
 }

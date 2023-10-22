@@ -12,22 +12,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class LoggingTestCase {
 
     @Test(priority = 1)
-    public void logTestCase() {
-
-        // Logging Headers only
-        logHeaders();
-
-        // Logging Cookies only
-        logCookies();
-
-        // Logging Body only
-        logBody();
-
-        // Logging Status only
-        logStatus();
-    }
-
-    void logHeaders(){
+    public void logHeaders(){
         given()
         .when()
                 .get("https://reqres.in/api/users/2")
@@ -37,7 +22,8 @@ public class LoggingTestCase {
                 .log().headers();
     }
 
-    void logCookies(){
+    @Test(priority = 2)
+    public void logCookies(){
         given()
         .when()
                 .get("https://reqres.in/api/users/2")
@@ -47,7 +33,19 @@ public class LoggingTestCase {
                 .log().cookies();
     }
 
-    void logBody(){
+    @Test(priority = 3)
+    public void logStatus(){
+        given()
+        .when()
+                .get("https://reqres.in/api/users/2")
+        .then()
+                .statusCode(200)
+                .body("data.id", equalTo(2))
+                .log().status();
+    }
+
+    @Test(priority = 4)
+    public void logBody(){
         given()
         .when()
                 .get("https://reqres.in/api/users/2")
@@ -57,13 +55,26 @@ public class LoggingTestCase {
                 .log().body();
     }
 
-    void logStatus(){
+    @Test(priority = 5)
+    public void logAll(){
         given()
         .when()
                 .get("https://reqres.in/api/users/2")
         .then()
                 .statusCode(200)
                 .body("data.id", equalTo(2))
-                .log().status();
+                .log().all();
     }
+
+    @Test(priority = 6)
+    public void logEverything(){
+        given()
+        .when()
+                .get("https://reqres.in/api/users/2")
+        .then()
+                .statusCode(200)
+                .body("data.id", equalTo(2))
+                .log().everything(true);
+    }
+
 }
