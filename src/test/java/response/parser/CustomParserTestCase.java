@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class RegisterAndUnRegisterParserTestCase {
+public class CustomParserTestCase {
 
     @Test(priority = 1)
     public void registerAndUnRegisterParser(){
@@ -17,12 +17,24 @@ public class RegisterAndUnRegisterParserTestCase {
                 given()
                         .when()
                         .get("https://wttr.in/Location")
-                        .then()
-                        .using()
-                        .defaultParser(Parser.JSON);
+                        .then();
 
         System.out.println("Response : " +  response.extract().asPrettyString());
         RestAssured.unregisterParser("text/html");
+    }
+
+    @Test(priority = 2)
+    public void customParser(){
+
+        ValidatableResponse response =
+                given()
+                .when()
+                        .get("https://wttr.in/Location")
+                .then()
+                        .using()
+                        .parser("text/html", Parser.HTML);
+
+        System.out.println("Response : " +  response.extract().asPrettyString());
     }
 
 }
