@@ -13,9 +13,9 @@ public class HtmlParserTestCase {
 
         ValidatableResponse response =
                 given()
-                        .when()
+                .when()
                         .get("https://static-rsa.badssl.com/")
-                        .then()
+                .then()
                         .using()
                         .defaultParser(Parser.HTML);
 

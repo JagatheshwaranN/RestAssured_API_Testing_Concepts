@@ -13,9 +13,9 @@ public class TextParserTestCase {
 
         ValidatableResponse response =
                 given()
-                        .when()
+                .when()
                         .get("https://baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1")
-                        .then()
+                .then()
                         .using()
                         .defaultParser(Parser.TEXT);
 

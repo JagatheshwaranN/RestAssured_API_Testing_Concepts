@@ -15,9 +15,9 @@ public class CustomParserTestCase {
         RestAssured.registerParser("text/html", Parser.HTML);
         ValidatableResponse response =
                 given()
-                        .when()
+                .when()
                         .get("https://wttr.in/Location")
-                        .then();
+                .then();
 
         System.out.println("Response : " +  response.extract().asPrettyString());
         RestAssured.unregisterParser("text/html");

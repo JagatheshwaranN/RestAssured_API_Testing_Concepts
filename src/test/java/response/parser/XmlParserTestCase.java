@@ -13,9 +13,9 @@ public class XmlParserTestCase {
 
         ValidatableResponse response =
                 given()
-                        .when()
+                .when()
                         .get("http://restapi.adequateshop.com/api/Traveler?page=1")
-                        .then()
+                .then()
                         .using()
                         .defaultParser(Parser.XML);
 
