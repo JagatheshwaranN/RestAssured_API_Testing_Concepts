@@ -1,4 +1,4 @@
-package deserialization.jackson_annotation;
+package deserialization.jackson;
 
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
