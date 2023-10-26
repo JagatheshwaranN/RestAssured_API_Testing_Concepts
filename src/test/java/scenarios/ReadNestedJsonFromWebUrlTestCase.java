@@ -12,6 +12,7 @@ import java.net.URL;
 public class ReadNestedJsonFromWebUrlTestCase {
 
     JsonNode jsonNode;
+
     URL url;
 
     @BeforeTest
