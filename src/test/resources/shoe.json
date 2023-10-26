@@ -1,0 +1,9 @@
+{
+  "name": "Bata",
+  "category": "Shoe",
+  "details": {
+    "material": "Leather",
+    "color": "Brown",
+    "size": 9
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Samsung",
+  "category": "Phone",
+  "details": {
+    "display": "AMOLED",
+    "color": "Black",
+    "storage": "128GB"
+  }
+}
