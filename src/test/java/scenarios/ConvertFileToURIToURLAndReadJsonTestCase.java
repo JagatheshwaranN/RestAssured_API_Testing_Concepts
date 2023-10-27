@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URL;
 
-public class ConvertFileToURIToURLReadJsonTestCase {
+public class ConvertFileToURIToURLAndReadJsonTestCase {
 
     @Test(priority = 1)
     public void convertFileToUriToUrlAndReadJson() throws IOException {
