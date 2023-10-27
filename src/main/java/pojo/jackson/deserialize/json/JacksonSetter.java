@@ -1,4 +1,4 @@
-package pojo.jackson.deserialize;
+package pojo.jackson.deserialize.json;
 
 import com.fasterxml.jackson.annotation.JsonSetter;
 

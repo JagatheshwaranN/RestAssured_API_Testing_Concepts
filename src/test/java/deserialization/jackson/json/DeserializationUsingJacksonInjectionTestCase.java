@@ -1,10 +1,10 @@
-package deserialization.jackson;
+package deserialization.jackson.json;
 
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import org.testng.annotations.Test;
-import pojo.jackson.deserialize.JacksonInjection;
+import pojo.jackson.deserialize.json.JacksonInjection;
 
 import java.io.IOException;
 

@@ -1,13 +1,13 @@
-package pojo.jackson.deserialize;
+package pojo.jackson.deserialize.json;
 
 
-import com.fasterxml.jackson.annotation.JacksonInject;
+import com.fasterxml.jackson.annotation.JsonAlias;
 
-public class JacksonInjection {
+public class JacksonAlias {
 
+    @JsonAlias({"empId", "employeeId"})
     private int id;
 
-    @JacksonInject
     private String name;
 
     private String email;

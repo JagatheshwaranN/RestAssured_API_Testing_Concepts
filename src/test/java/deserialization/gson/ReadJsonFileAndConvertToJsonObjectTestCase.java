@@ -9,6 +9,8 @@ import org.testng.annotations.Test;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReadJsonFileAndConvertToJsonObjectTestCase {
 
@@ -25,6 +27,9 @@ public class ReadJsonFileAndConvertToJsonObjectTestCase {
         System.out.println(firstName);
         System.out.println(array);
         System.out.println(street);
+        // Get the Array Elements as List
+        List<?> list = gson.fromJson(String.valueOf(array), ArrayList.class);
+        System.out.println(list);
     }
 
     private JsonObject getJsonObjectFromJson(String file, Gson gson) {

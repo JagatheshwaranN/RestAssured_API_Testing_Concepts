@@ -1,9 +1,9 @@
-package deserialization.jackson;
+package deserialization.jackson.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.testng.annotations.Test;
-import pojo.jackson.deserialize.JacksonAnySetter;
+import pojo.jackson.deserialize.json.JacksonAnySetter;
 
 public class DeserializationUsingJacksonAnySetterTestCase {
 
