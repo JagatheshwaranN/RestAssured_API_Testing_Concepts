@@ -22,13 +22,13 @@ public class ReadJsonFileAndConvertToJsonObjectTestCase {
         JsonObject jsonObject = getJsonObjectFromJson(jsonFile, gson);
         JsonObject baseNode = jsonObject.getAsJsonObject("john");
         String firstName = baseNode.get("firstname").getAsString();
-        JsonArray array = baseNode.getAsJsonArray("skills");
+        JsonArray skills = baseNode.getAsJsonArray("skills");
         String street = baseNode.getAsJsonObject("address").get("street").getAsString();
         System.out.println(firstName);
-        System.out.println(array);
+        System.out.println(skills);
         System.out.println(street);
         // Get the Array Elements as List
-        List<?> list = gson.fromJson(String.valueOf(array), ArrayList.class);
+        List<?> list = gson.fromJson(String.valueOf(skills), ArrayList.class);
         System.out.println(list);
     }
 
