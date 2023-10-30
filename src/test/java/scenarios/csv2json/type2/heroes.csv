@@ -1,0 +1,4 @@
+TestCase,squad_name,home_town,formed,secret_base,active,members_name,members_age,members_secret_identity,members_powers
+1,Justice League,Various,2017,Hall of Justice,TRUE,Superman,35,Clark Kent,"Superhuman strength, Heat vision, Flight"
+2,Justice League,Various,2017,Hall of Justice,TRUE,Batman,40,Bruce Wayne,"Genius-level intellect, Martial arts expertise, Utilizes high-tech gadgets"
+3,Justice League,Various,2017,Hall of Justice,TRUE,Aquaman,30,Arthur Curry,"Superhuman strength, Control over sea life, Underwater breathing"

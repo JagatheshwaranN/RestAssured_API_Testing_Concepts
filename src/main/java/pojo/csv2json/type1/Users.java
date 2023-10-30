@@ -1,5 +1,5 @@
 
-package pojo.csv2json;
+package pojo.csv2json.type1;
 
 import java.util.List;
 

@@ -1,12 +1,12 @@
-package scenarios.csv2json;
+package scenarios.csv2json.type1;
 
 import com.google.gson.Gson;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import org.testng.annotations.Test;
-import pojo.csv2json.Address;
-import pojo.csv2json.Employee;
-import pojo.csv2json.Users;
+import pojo.csv2json.type1.Address;
+import pojo.csv2json.type1.Employee;
+import pojo.csv2json.type1.Users;
 
 import java.io.*;
 import java.util.*;
@@ -16,9 +16,9 @@ public class ReadCsvFileAndGenerateJsonTestCase {
     @Test(priority = 1)
     public void readCsvFileAndGenerateJson() throws IOException, CsvException {
         String csvFilePath = ".\\src\\test\\java\\scenarios\\csv2json\\users.csv";
+        String file = ".\\src\\test\\java\\scenarios\\csv2json\\usersFromCsv.json";
         LinkedHashMap<String, LinkedHashMap<String, String>> csvToLinkedHashMap = readCsvFile(new File(csvFilePath));
         Users usersPojo = convertMapToPojo(csvToLinkedHashMap);
-        String file = ".\\src\\test\\java\\scenarios\\csv2json\\usersFromCsv.json";
         FileWriter fileWriter;
         Gson gson = new Gson();
         try{
