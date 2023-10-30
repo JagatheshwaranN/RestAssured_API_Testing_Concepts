@@ -19,10 +19,13 @@ public class Member {
 
     @JsonProperty("name")
     private String name;
+
     @JsonProperty("age")
     private Integer age;
+
     @JsonProperty("secret_identity")
     private String secretIdentity;
+
     @JsonProperty("powers")
     private List<String> powers;
 
@@ -37,7 +40,7 @@ public class Member {
     }
 
     @JsonProperty("age")
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 

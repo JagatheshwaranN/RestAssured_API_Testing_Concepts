@@ -21,14 +21,19 @@ public class Heroes {
 
     @JsonProperty("squad_name")
     private String squadName;
+
     @JsonProperty("home_town")
     private String homeTown;
+
     @JsonProperty("formed")
     private Integer formed;
+
     @JsonProperty("secret_base")
     private String secretBase;
+
     @JsonProperty("active")
     private Boolean active;
+
     @JsonProperty("members")
     private List<Member> members;
 

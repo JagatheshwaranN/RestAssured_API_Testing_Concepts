@@ -15,8 +15,8 @@ public class ReadCsvFileAndGenerateJsonTestCase {
 
     @Test(priority = 1)
     public void readCsvFileAndGenerateJson() throws IOException, CsvException {
-        String csvFilePath = ".\\src\\test\\java\\scenarios\\csv2json\\users.csv";
-        String file = ".\\src\\test\\java\\scenarios\\csv2json\\usersFromCsv.json";
+        String csvFilePath = ".\\src\\test\\java\\scenarios\\csv2json\\type1\\users.csv";
+        String file = ".\\src\\test\\java\\scenarios\\csv2json\\type1\\usersFromCsv.json";
         LinkedHashMap<String, LinkedHashMap<String, String>> csvToLinkedHashMap = readCsvFile(new File(csvFilePath));
         Users usersPojo = convertMapToPojo(csvToLinkedHashMap);
         FileWriter fileWriter;
@@ -54,24 +54,24 @@ public class ReadCsvFileAndGenerateJsonTestCase {
         Users usersPojo = new Users();
         List<Employee> employeeList = new ArrayList<>();
         for(LinkedHashMap<String, String> linkedHashMap : csvToLinkedHashMap.values()){
-            Employee employee = new Employee();
-            Address address = new Address();
+            Employee employeePojo = new Employee();
+            Address addressPojo = new Address();
             for(Map.Entry<String, String> entry : linkedHashMap.entrySet()){
                 String key = entry.getKey();
                 String value = entry.getValue();
                 switch (key) {
-                    case "firstname" -> employee.setFirstname(value);
-                    case "lastname" -> employee.setLastname(value);
-                    case "age" -> employee.setAge(Integer.valueOf(value));
-                    case "skills" -> employee.setSkills(Collections.singletonList(value));
-                    case "address_street" -> address.setStreet(value);
-                    case "address_city" -> address.setCity(value);
-                    case "address_state" -> address.setState(value);
-                    case "address_zipcode" -> address.setZipcode(value);
+                    case "firstname" -> employeePojo.setFirstname(value);
+                    case "lastname" -> employeePojo.setLastname(value);
+                    case "age" -> employeePojo.setAge(Integer.valueOf(value));
+                    case "skills" -> employeePojo.setSkills(Collections.singletonList(value));
+                    case "address_street" -> addressPojo.setStreet(value);
+                    case "address_city" -> addressPojo.setCity(value);
+                    case "address_state" -> addressPojo.setState(value);
+                    case "address_zipcode" -> addressPojo.setZipcode(value);
                 }
             }
-            employee.setAddress(address);
-            employeeList.add(employee);
+            employeePojo.setAddress(addressPojo);
+            employeeList.add(employeePojo);
         }
         usersPojo.setEmployees(employeeList);
         return usersPojo;
