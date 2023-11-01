@@ -1,0 +1,6 @@
+!!pojo.yaml.Employee
+address: {city: Dallas, country: USA, state: Texas, zipcode: '45001'}
+id: 1
+location: Dallas
+name: John
+phone: 313-456-7785
