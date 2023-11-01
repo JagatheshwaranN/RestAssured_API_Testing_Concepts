@@ -2,12 +2,9 @@ package yaml;
 
 import org.testng.annotations.Test;
 import org.yaml.snakeyaml.Yaml;
-import pojo.yaml.Child;
-import pojo.yaml.Employees;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -50,7 +47,7 @@ public class YamlBasicsTestCase {
     @Test(priority = 4)
     public void yamlFileToMapByYaml(){
         Yaml yaml = new Yaml();
-        String file = "src\\main\\java\\yaml\\user.yaml";
+        String file = "src\\main\\java\\yaml\\files\\user.yaml";
         Map<String, String> map;
         try {
             map = yaml.load(new FileInputStream(file));
@@ -58,25 +55,6 @@ public class YamlBasicsTestCase {
             throw new RuntimeException(e);
         }
         map.entrySet().forEach(System.out::println);
-    }
-
-    @Test(priority = 5)
-    public void yamlFileToPojoByYaml(){
-        Yaml yaml = new Yaml();
-        String file = "src\\main\\java\\yaml\\employees.yaml";
-        Employees employees;
-        try {
-            employees = yaml.loadAs(new FileReader(file), Employees.class);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println(employees);
-
-        employees.getChild().forEach(System.out::println);
-
-        for(Child child : employees.getChild()){
-            System.out.println(child.getEmpId() + "="+ child.getEmpName());
-        }
     }
 
 }
