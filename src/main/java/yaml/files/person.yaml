@@ -1,0 +1,12 @@
+# Details of a Person
+
+name: John
+age: 30
+location:
+  city: Dallas
+  state: Texas
+  zipcode: 45001
+  country: USA
+roles:
+  - Devops
+  - Testing
