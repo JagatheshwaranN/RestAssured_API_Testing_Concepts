@@ -13,7 +13,7 @@ public class PojoToYamlFileTestCase {
     @Test(priority = 1)
     public void pojoToYamlFile() {
         Yaml yaml = new Yaml();
-        String filePath = System.getProperty("user.dir")+"//src//main//java//yaml//files//yamlFileFromPojo.yaml";
+        String filePath = System.getProperty("user.dir")+"//src//main//java//yaml//files//yamlfilefrompojo.yaml";
         try {
             yaml.dump(getEmployee(), new FileWriter(filePath));
         } catch (IOException e) {

@@ -1,0 +1,9 @@
+candidate1:
+  name: &var1 John
+  age: 30
+  hobbies: ["painting", "art", "music"]
+  firstname: *var1
+candidate2:
+  name: "Alex"
+  age: 28
+  hobbies: ["gardening", "swimming"]
