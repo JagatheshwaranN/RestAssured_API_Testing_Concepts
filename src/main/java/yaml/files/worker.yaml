@@ -1,0 +1,28 @@
+worker:
+  firstname: "John"
+  lastname: "Smith"
+  age: 30
+  rating: !!str 9
+  marks: !!float 8
+  birthday: 1993-01-01 06:00:00
+  male: true
+  favNum: 1e+2
+  hobbies:
+    - painting
+    - art
+    - music
+  movies: ["Men of Honour", "Pirates of the Caribbean"]
+  friends:
+    - {name: "Alex", age: 28}
+    - name: "Eric"
+      age: 25
+    -
+      name: "Jeni"
+      age: 25
+  summary: >
+    Till now have completed the 2 half marathons.
+    Wish to complete full marathon someday.
+  signature: |
+    John Smith
+    Artist
+    Email - john.smith@test.com
