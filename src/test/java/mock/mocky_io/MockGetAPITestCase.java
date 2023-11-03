@@ -1,4 +1,4 @@
-package mock;
+package mock.mocky_io;
 
 import org.testng.annotations.Test;
 
