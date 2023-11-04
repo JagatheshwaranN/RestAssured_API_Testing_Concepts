@@ -1,0 +1,15 @@
+{
+  "worker": {
+    "id": "EMP101",
+    "name": "John Doe",
+    "location": "MiddleTown",
+    "phone": "123-456-7890",
+    "address": {
+      "city": "MiddleTown",
+      "state": "New York",
+      "zipcode": "10001",
+      "country": "United States"
+    },
+    "updatedAt": "2023-11-04T04:48:52.454Z"
+  }
+}

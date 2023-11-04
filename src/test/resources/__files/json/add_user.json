@@ -1,0 +1,15 @@
+{
+  "worker": {
+    "id": "EMP101",
+    "name": "John Doe",
+    "location": "New York",
+    "phone": "123-456-7890",
+    "address": {
+      "city": "New York",
+      "state": "New York",
+      "zipcode": "10001",
+      "country": "United States"
+    },
+    "createdAt": "2023-11-04T02:48:52.454Z"
+  }
+}

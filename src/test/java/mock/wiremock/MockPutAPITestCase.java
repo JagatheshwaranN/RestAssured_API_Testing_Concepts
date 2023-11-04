@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class MockGetAPITestCase {
+public class MockPutAPITestCase {
 
     private static final String HOST = "localhost";
 
@@ -27,8 +27,8 @@ public class MockGetAPITestCase {
         ResponseDefinitionBuilder responseDefinitionBuilder = new ResponseDefinitionBuilder();
         responseDefinitionBuilder.withStatus(200);
         responseDefinitionBuilder.withHeader("Content-Type", "application/json");
-        responseDefinitionBuilder.withBodyFile("json/get_user.json");
-        WireMock.stubFor(WireMock.get(WireMock.urlPathEqualTo("/user/emp101")).willReturn(responseDefinitionBuilder));
+        responseDefinitionBuilder.withBodyFile("json/update_user.json");
+        WireMock.stubFor(WireMock.put(WireMock.urlMatching("/user/update/.*")).willReturn(responseDefinitionBuilder));
     }
 
     @AfterTest
@@ -39,11 +39,11 @@ public class MockGetAPITestCase {
     }
 
     @Test
-    public void mockPostApiTest() {
+    public void mockPutApiTest() {
         ValidatableResponse response =
                 given()
                 .when()
-                        .get("http://localhost:8080/user/emp101")
+                        .put("http://localhost:8080/user/update/emp101")
                 .then()
                         .assertThat()
                         .statusCode(200)
@@ -54,9 +54,9 @@ public class MockGetAPITestCase {
         Assert.assertEquals(response.extract().header("Content-Type"), "application/json");
         Assert.assertEquals(response.extract().jsonPath().get("worker.id"), "EMP101");
         Assert.assertEquals(response.extract().jsonPath().get("worker.name"), "John Doe");
-        Assert.assertEquals(response.extract().jsonPath().get("worker.address.city"), "New York");
+        Assert.assertEquals(response.extract().jsonPath().get("worker.address.city"), "MiddleTown");
         Assert.assertEquals(response.extract().jsonPath().get("worker.address.country"), "United States");
-        Assert.assertEquals(response.extract().jsonPath().get("worker.retrievedAt"), "2023-11-04T03:48:52.454Z");
+        Assert.assertEquals(response.extract().jsonPath().get("worker.updatedAt"), "2023-11-04T04:48:52.454Z");
     }
 
 }
