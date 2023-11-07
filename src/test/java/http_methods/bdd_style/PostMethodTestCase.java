@@ -1,9 +1,10 @@
 package http_methods.bdd_style;
 
-import static io.restassured.RestAssured.*;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
+
+import static io.restassured.RestAssured.given;
 
 /**
  * @restapi
@@ -27,4 +28,5 @@ public class PostMethodTestCase {
                 .statusCode(201)
                 .log().all();
     }
+
 }

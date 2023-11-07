@@ -10,17 +10,17 @@ import static org.hamcrest.Matchers.equalTo;
  * @restapi
  * @post
  */
-public class PayloadUsingPojoTestCase {
+public class PayloadUsingPojoWithTransientTestCase {
 
     @Test(priority = 1)
-    public void postUsingPojoAsPayload() {
+    public void postUsingPojoWithTransientAsPayload() {
 
-       Student studentData = new Student();
-       studentData.setName("Adam");
-       studentData.setLocation("Richmond");
-       studentData.setPhone("313-456-7890");
-       String[] courses = {"Accounts", "Commerce", "Computer Science"};
-       studentData.setCourses(courses);
+        Student studentData = new Student();
+        studentData.setName("Adam");
+        studentData.setLocation("Richmond");
+        studentData.setPhone("313-456-7890");
+        String[] courses = {"Accounts", "Commerce", "Computer Science"};
+        studentData.setCourses(courses);
 
         given()
                 .contentType("application/json")

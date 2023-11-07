@@ -3,7 +3,7 @@ package pojo;
 
 public class Student {
 
-       int id;
+       transient int id;
 
        String name;
 
