@@ -29,7 +29,7 @@ public class GetMethodTypesTestCase {
     }
 
     /*
-        1. The below method make use of 'RequestSpecification' object named 'requestSpecification'
+        1. The below method makes use of 'RequestSpecification' object named 'requestSpecification'
            using RestAssured.
         2. This method uses the 'request()' method of the 'RequestSpecification' object to explicitly
            specify the HTTP method (GET, in this case) and send the request.
@@ -52,7 +52,7 @@ public class GetMethodTypesTestCase {
     }
 
     /*
-        1. Similar to the previous method, the below method also make use of 'RequestSpecification'
+        1. Similar to the previous method, the below method also makes use of 'RequestSpecification'
            object named 'requestSpecification' using RestAssured.
         2. In this case, the 'get()' method directly being used on the 'RequestSpecification' object
            to send a GET request.

@@ -36,7 +36,7 @@ public class PostMethodTypesTestCase {
     }
 
     /*
-        1. This is a more flexible approach. The below method make use of 'RequestSpecification' object
+        1. This is a more flexible approach.The below method makes use of 'RequestSpecification' object
            named 'requestSpecification' using RestAssured. The requestSpecification should have been set
            up with specific details such as the base URI, headers, authentication, etc.
         2. This method uses the 'request()' method of the 'RequestSpecification' object to explicitly
@@ -64,7 +64,7 @@ public class PostMethodTypesTestCase {
     }
 
     /*
-        1. Similar to the previous method, the below method also make use of 'RequestSpecification'
+        1. Similar to the previous method, the below method also makes use of 'RequestSpecification'
            object named 'requestSpecification' using RestAssured.
         2. In this case, the 'post()' method directly being used on the 'RequestSpecification' object
            to send a POST request.

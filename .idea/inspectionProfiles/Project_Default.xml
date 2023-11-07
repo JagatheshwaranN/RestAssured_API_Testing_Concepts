@@ -15,7 +15,7 @@
       <option name="IGNORE_FIELDS_USED_IN_MULTIPLE_METHODS" value="true" />
     </inspection_tool>
     <inspection_tool class="JavadocDeclaration" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="ADDITIONAL_TAGS" value="restapi,get,put,post,delete,dummy,mock,datashare" />
+      <option name="ADDITIONAL_TAGS" value="restapi,get,put,post,delete,dummy,mock,datashare,patch" />
     </inspection_tool>
   </profile>
 </component>
