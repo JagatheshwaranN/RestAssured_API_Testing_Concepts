@@ -39,7 +39,7 @@ public class WireMockAnyUrlGetAPITestCase {
     }
 
     @Test
-    public void mockPostApiTest() {
+    public void mockGetApiTest() {
         ValidatableResponse response =
                 given()
                 .when()
