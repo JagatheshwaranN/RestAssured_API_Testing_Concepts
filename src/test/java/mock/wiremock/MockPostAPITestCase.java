@@ -28,7 +28,18 @@ public class MockPostAPITestCase {
         responseDefinitionBuilder.withStatus(201);
         responseDefinitionBuilder.withHeader("Content-Type", "application/json");
         responseDefinitionBuilder.withBodyFile("json/add_user.json");
-        WireMock.stubFor(WireMock.post(WireMock.urlEqualTo("/user/add")).willReturn(responseDefinitionBuilder));
+        WireMock.stubFor(WireMock.post(WireMock.urlEqualTo("/user/add")).withRequestBody(WireMock.equalToJson("""
+                {
+                  "name": "John Doe",
+                  "location": "New York",
+                  "phone": "123-456-7890",
+                  "address": {
+                    "city": "New York",
+                    "state": "New York",
+                    "zipcode": "10001",
+                    "country": "United States"
+                  }
+                }""")).willReturn(responseDefinitionBuilder));
     }
 
     @AfterTest
@@ -40,8 +51,22 @@ public class MockPostAPITestCase {
 
     @Test
     public void mockPostApiTest() {
+
+        String payloadJson = """
+                                {
+                                  "name": "John Doe",
+                                  "location": "New York",
+                                  "phone": "123-456-7890",
+                                  "address": {
+                                    "city": "New York",
+                                    "state": "New York",
+                                    "zipcode": "10001",
+                                    "country": "United States"
+                                  }
+                                }""";
         ValidatableResponse response =
                 given()
+                        .body(payloadJson)
                 .when()
                         .post("http://localhost:8080/user/add")
                 .then()
