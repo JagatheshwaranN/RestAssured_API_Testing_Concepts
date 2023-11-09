@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class MockPutAPITestCase {
+public class VerifyMockGetAPITestCase {
 
     private static final String HOST = "localhost";
 
@@ -27,19 +27,8 @@ public class MockPutAPITestCase {
         ResponseDefinitionBuilder responseDefinitionBuilder = new ResponseDefinitionBuilder();
         responseDefinitionBuilder.withStatus(200);
         responseDefinitionBuilder.withHeader("Content-Type", "application/json");
-        responseDefinitionBuilder.withBodyFile("json/update_user.json");
-        WireMock.stubFor(WireMock.put(WireMock.urlMatching("/user/update/.*")).withRequestBody(WireMock.equalToJson("""
-                {
-                  "name": "John Doe",
-                  "location": "New York",
-                  "phone": "123-456-7890",
-                  "address": {
-                    "city": "MiddleTown",
-                    "state": "New York",
-                    "zipcode": "10001",
-                    "country": "United States"
-                  }
-                }""")).willReturn(responseDefinitionBuilder));
+        responseDefinitionBuilder.withBodyFile("json/get_user.json");
+        WireMock.stubFor(WireMock.get(WireMock.urlPathEqualTo("/user/emp101")).willReturn(responseDefinitionBuilder));
     }
 
     @AfterTest
@@ -50,38 +39,26 @@ public class MockPutAPITestCase {
     }
 
     @Test
-    public void mockPutApiTest() {
-
-        String payloadJson = """
-                                {
-                                  "name": "John Doe",
-                                  "location": "New York",
-                                  "phone": "123-456-7890",
-                                  "address": {
-                                    "city": "MiddleTown",
-                                    "state": "New York",
-                                    "zipcode": "10001",
-                                    "country": "United States"
-                                  }
-                                }""";
+    public void verifyMockGetApiTest() {
         ValidatableResponse response =
                 given()
-                        .body(payloadJson)
                 .when()
-                        .put("http://localhost:8080/user/update/emp101")
+                        .get("http://localhost:8080/user/emp101")
                 .then()
                         .assertThat()
                         .statusCode(200)
                         .log()
                         .all();
 
+        WireMock.verify(1, WireMock.getRequestedFor(WireMock.urlPathEqualTo("/user/emp101")));
+
         Assert.assertEquals(response.extract().statusCode(), 200);
         Assert.assertEquals(response.extract().header("Content-Type"), "application/json");
         Assert.assertEquals(response.extract().jsonPath().get("worker.id"), "EMP101");
         Assert.assertEquals(response.extract().jsonPath().get("worker.name"), "John Doe");
-        Assert.assertEquals(response.extract().jsonPath().get("worker.address.city"), "MiddleTown");
+        Assert.assertEquals(response.extract().jsonPath().get("worker.address.city"), "New York");
         Assert.assertEquals(response.extract().jsonPath().get("worker.address.country"), "United States");
-        Assert.assertEquals(response.extract().jsonPath().get("worker.updatedAt"), "2023-11-04T04:48:52.454Z");
+        Assert.assertEquals(response.extract().jsonPath().get("worker.retrievedAt"), "2023-11-04T03:48:52.454Z");
     }
 
 }

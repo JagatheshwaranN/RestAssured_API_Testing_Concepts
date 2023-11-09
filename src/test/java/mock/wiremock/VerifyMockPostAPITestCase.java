@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class MockPutAPITestCase {
+public class VerifyMockPostAPITestCase {
 
     private static final String HOST = "localhost";
 
@@ -25,16 +25,16 @@ public class MockPutAPITestCase {
         wireMockServer.start();
         WireMock.configureFor(HOST, PORT);
         ResponseDefinitionBuilder responseDefinitionBuilder = new ResponseDefinitionBuilder();
-        responseDefinitionBuilder.withStatus(200);
+        responseDefinitionBuilder.withStatus(201);
         responseDefinitionBuilder.withHeader("Content-Type", "application/json");
-        responseDefinitionBuilder.withBodyFile("json/update_user.json");
-        WireMock.stubFor(WireMock.put(WireMock.urlMatching("/user/update/.*")).withRequestBody(WireMock.equalToJson("""
+        responseDefinitionBuilder.withBodyFile("json/add_user.json");
+        WireMock.stubFor(WireMock.post(WireMock.urlEqualTo("/user/add")).withRequestBody(WireMock.equalToJson("""
                 {
                   "name": "John Doe",
                   "location": "New York",
                   "phone": "123-456-7890",
                   "address": {
-                    "city": "MiddleTown",
+                    "city": "New York",
                     "state": "New York",
                     "zipcode": "10001",
                     "country": "United States"
@@ -50,7 +50,7 @@ public class MockPutAPITestCase {
     }
 
     @Test
-    public void mockPutApiTest() {
+    public void mockPostApiTest() {
 
         String payloadJson = """
                                 {
@@ -58,7 +58,7 @@ public class MockPutAPITestCase {
                                   "location": "New York",
                                   "phone": "123-456-7890",
                                   "address": {
-                                    "city": "MiddleTown",
+                                    "city": "New York",
                                     "state": "New York",
                                     "zipcode": "10001",
                                     "country": "United States"
@@ -68,20 +68,33 @@ public class MockPutAPITestCase {
                 given()
                         .body(payloadJson)
                 .when()
-                        .put("http://localhost:8080/user/update/emp101")
+                        .post("http://localhost:8080/user/add")
                 .then()
                         .assertThat()
-                        .statusCode(200)
+                        .statusCode(201)
                         .log()
                         .all();
 
-        Assert.assertEquals(response.extract().statusCode(), 200);
+        Assert.assertEquals(response.extract().statusCode(), 201);
         Assert.assertEquals(response.extract().header("Content-Type"), "application/json");
         Assert.assertEquals(response.extract().jsonPath().get("worker.id"), "EMP101");
         Assert.assertEquals(response.extract().jsonPath().get("worker.name"), "John Doe");
-        Assert.assertEquals(response.extract().jsonPath().get("worker.address.city"), "MiddleTown");
+        Assert.assertEquals(response.extract().jsonPath().get("worker.address.city"), "New York");
         Assert.assertEquals(response.extract().jsonPath().get("worker.address.country"), "United States");
-        Assert.assertEquals(response.extract().jsonPath().get("worker.updatedAt"), "2023-11-04T04:48:52.454Z");
+        Assert.assertEquals(response.extract().jsonPath().get("worker.createdAt"), "2023-11-04T02:48:52.454Z");
+
+        WireMock.verify(1, WireMock.postRequestedFor(WireMock.urlEqualTo("/user/add")).withRequestBody(WireMock.equalToJson("""
+                {
+                  "name": "John Doe",
+                  "location": "New York",
+                  "phone": "123-456-7890",
+                  "address": {
+                    "city": "New York",
+                    "state": "New York",
+                    "zipcode": "10001",
+                    "country": "United States"
+                  }
+                }""")));
     }
 
 }
