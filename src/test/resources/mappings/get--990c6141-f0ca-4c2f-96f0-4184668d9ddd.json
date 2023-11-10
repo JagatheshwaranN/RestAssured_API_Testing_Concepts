@@ -1,0 +1,28 @@
+{
+  "id" : "990c6141-f0ca-4c2f-96f0-4184668d9ddd",
+  "name" : "",
+  "request" : {
+    "url" : "/",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{\n  \"id\": 1,\n  \"name\": \"John Doe\",\n  \"location\": \"New York\",\n  \"phone\": \"123-456-7890\",\n  \"courses\": [\n    \"Mathematics\",\n    \"History\",\n    \"Science\"\n  ]\n}",
+    "headers" : {
+      "X-Powered-By" : "Express",
+      "Vary" : "Origin, Accept-Encoding",
+      "Access-Control-Allow-Credentials" : "true",
+      "Cache-Control" : "no-cache",
+      "Pragma" : "no-cache",
+      "Expires" : "-1",
+      "X-Content-Type-Options" : "nosniff",
+      "Content-Type" : "application/json; charset=utf-8",
+      "ETag" : "W/\"9c-mwD0rTKsJRo5Y+811vjCXyMeBPI\"",
+      "Date" : "Fri, 10 Nov 2023 03:20:39 GMT",
+      "Keep-Alive" : "timeout=5"
+    }
+  },
+  "uuid" : "990c6141-f0ca-4c2f-96f0-4184668d9ddd",
+  "persistent" : true,
+  "insertionIndex" : 1
+}
