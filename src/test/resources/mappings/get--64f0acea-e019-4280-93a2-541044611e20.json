@@ -1,0 +1,28 @@
+{
+  "id" : "64f0acea-e019-4280-93a2-541044611e20",
+  "name" : "",
+  "request" : {
+    "url" : "/",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "[\n  {\n    \"id\": 1,\n    \"name\": \"John Doe\",\n    \"location\": \"New York\",\n    \"phone\": \"123-456-7890\",\n    \"courses\": [\n      \"Mathematics\",\n      \"History\",\n      \"Science\"\n    ]\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Alice Smith\",\n    \"location\": \"Los Angeles\",\n    \"phone\": \"987-654-3210\",\n    \"courses\": [\n      \"English\",\n      \"Art\",\n      \"Physics\"\n    ]\n  },\n  {\n    \"id\": 3,\n    \"name\": \"Bob Johnson\",\n    \"location\": \"Chicago\",\n    \"phone\": \"555-123-4567\",\n    \"courses\": [\n      \"Computer Science\",\n      \"Chemistry\",\n      \"Geography\"\n    ]\n  }\n]",
+    "headers" : {
+      "X-Powered-By" : "Express",
+      "Vary" : "Origin, Accept-Encoding",
+      "Access-Control-Allow-Credentials" : "true",
+      "Cache-Control" : "no-cache",
+      "Pragma" : "no-cache",
+      "Expires" : "-1",
+      "X-Content-Type-Options" : "nosniff",
+      "Content-Type" : "application/json; charset=utf-8",
+      "ETag" : "W/\"227-Id8H9gqHKgYhkMxPzSDWvpOky1I\"",
+      "Date" : "Fri, 10 Nov 2023 05:53:36 GMT",
+      "Keep-Alive" : "timeout=5"
+    }
+  },
+  "uuid" : "64f0acea-e019-4280-93a2-541044611e20",
+  "persistent" : true,
+  "insertionIndex" : 4
+}

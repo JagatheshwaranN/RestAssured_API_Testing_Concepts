@@ -15,13 +15,15 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class WiremockPlaybackAPITestCase {
+public class WireMockPlaybackAPITestCase {
 
     private static final String HOST = "localhost";
 
     private static final int PORT = 8080;
 
-    public static WireMockServer wireMockServer;
+    public WireMockServer wireMockServer;
+
+    public WireMock wireMock;
 
     @BeforeTest
     public void startupServer() {
@@ -39,10 +41,11 @@ public class WiremockPlaybackAPITestCase {
 
     @Test
     public void verifyPlayBackApiTest() throws IOException {
-        String content = Files.readString(Paths.get("src/test/resources/mappings/get--36a80e49-32a8-4f84-8872-793b103df6c6.json"), StandardCharsets.UTF_8);
-        StubMapping stubMappingBuilder = StubMapping.buildFrom(content);
-        new WireMock().register(stubMappingBuilder);
-        Response response = RestAssured.get("http://localhost:8080");
+        wireMock = new WireMock();
+        String jsonString = Files.readString(Paths.get("src/test/resources/mappings/get--4880e29c-6507-4719-894c-d8e43c7268e3.json"), StandardCharsets.UTF_8);
+        StubMapping stubMapping = StubMapping.buildFrom(jsonString);
+        wireMock.register(stubMapping);
+        Response response = RestAssured.get("http://localhost:8080/");
         response.prettyPrint();
         Assert.assertEquals(response.getStatusCode(), (200));
     }
