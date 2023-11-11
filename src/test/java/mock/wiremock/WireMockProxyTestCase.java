@@ -3,6 +3,7 @@ package mock.wiremock;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import io.restassured.response.ValidatableResponse;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -45,7 +46,7 @@ public class WireMockProxyTestCase {
                 .body("id", equalTo(2));
 
         System.out.println(response.extract().asPrettyString());
+        Assert.assertEquals(response.extract().body().jsonPath().getInt("id"), 2);
     }
-
 
 }
