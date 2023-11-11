@@ -5,6 +5,7 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.http.Fault;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.apache.hc.client5.http.fluent.Request;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -41,10 +42,40 @@ public class WireMockErrorSimulationTestCase {
         Assert.assertEquals(response.getStatusCode(), 500);
     }
 
-    @Test
-    public void verifyMalformedUrlErrorTest() {
+    @Test(enabled = false)
+    public void verifyMalformedUrlExceptionTest() {
         WireMock.stubFor(WireMock.any(WireMock.urlPathEqualTo("/user/emp103")).willReturn(WireMock.aResponse().withFault(Fault.MALFORMED_RESPONSE_CHUNK)));
+        Assert.assertThrows(org.apache.hc.core5.http.MalformedChunkCodingException.class, () -> {
+            org.apache.hc.client5.http.fluent.Response response = Request.get("http://localhost:8080/user/emp103").execute();
+            System.out.println("Response Body :" + response.returnContent());
+        });
+    }
 
+    @Test(enabled = false)
+    public void verifyConnectResetExceptionTest() {
+        WireMock.stubFor(WireMock.any(WireMock.urlPathEqualTo("/user/emp103")).willReturn(WireMock.aResponse().withFault(Fault.CONNECTION_RESET_BY_PEER)));
+        Assert.assertThrows(java.net.SocketException.class, () -> {
+            org.apache.hc.client5.http.fluent.Response response = Request.get("http://localhost:8080/user/emp103").execute();
+            System.out.println("Response Body :" + response.returnContent());
+        });
+    }
+
+    @Test(enabled = false)
+    public void verifyEmptyResponseExceptionTest() {
+        WireMock.stubFor(WireMock.any(WireMock.urlPathEqualTo("/user/emp103")).willReturn(WireMock.aResponse().withFault(Fault.EMPTY_RESPONSE)));
+        Assert.assertThrows(org.apache.hc.core5.http.NoHttpResponseException.class, () -> {
+            org.apache.hc.client5.http.fluent.Response response = Request.get("http://localhost:8080/user/emp103").execute();
+            System.out.println("Response Body :" + response.returnContent());
+        });
+    }
+
+    @Test(enabled = false)
+    public void verifyRandomDataExceptionTest() {
+        WireMock.stubFor(WireMock.any(WireMock.urlPathEqualTo("/user/emp103")).willReturn(WireMock.aResponse().withFault(Fault.RANDOM_DATA_THEN_CLOSE)));
+        Assert.assertThrows(org.apache.hc.core5.http.NoHttpResponseException.class, () -> {
+            org.apache.hc.client5.http.fluent.Response response = Request.get("http://localhost:8080/user/emp103").execute();
+            System.out.println("Response Body :" + response.returnContent());
+        });
     }
 
 }
