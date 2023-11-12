@@ -52,7 +52,7 @@ public class WireMockErrorSimulationTestCase {
     }
 
     @Test(enabled = false)
-    public void verifyConnectResetExceptionTest() {
+    public void verifyConnectionResetExceptionTest() {
         WireMock.stubFor(WireMock.any(WireMock.urlPathEqualTo("/user/emp103")).willReturn(WireMock.aResponse().withFault(Fault.CONNECTION_RESET_BY_PEER)));
         Assert.assertThrows(java.net.SocketException.class, () -> {
             org.apache.hc.client5.http.fluent.Response response = Request.get("http://localhost:8080/user/emp103").execute();
