@@ -1,6 +1,6 @@
 {
   "scenarioName": "book_shopping",
-  "requiredScenarioState": "Started",
+  "requiredScenarioState": "started",
   "request": {
     "urlPath": "/cart-items",
     "method": "GET"

@@ -54,12 +54,15 @@ public class WireMockStatefulBehaviorTestCase {
         scenarioName = emptyCartJson.getString("scenarioName");
         scenarioState = emptyCartJson.getString("requiredScenarioState");
 
+        String responseBody = emptyCartJson.getJSONObject("response").toString(2);
+        responseBody = new String(responseBody.getBytes(StandardCharsets.UTF_8));
+
         // Create a new WireMock stub for the empty cart scenario
         WireMock.stubFor(WireMock.get(WireMock.urlPathEqualTo("/cart-items"))
                 .inScenario(scenarioName)
                 .whenScenarioStateIs(scenarioState)
                 .willReturn(ResponseDefinitionBuilder.responseDefinition().withStatus(200)
-                        .withBody(emptyCartJson.getJSONObject("response").toString(2))));
+                        .withBody(responseBody)));
 
         // Make a GET request to the /cart-items endpoint
         ValidatableResponse response =
@@ -82,6 +85,9 @@ public class WireMockStatefulBehaviorTestCase {
         scenarioName = addCartJson.getString("scenarioName");
         scenarioState = addCartJson.getString("requiredScenarioState");
 
+        String responseBody = addCartJson.getJSONObject("response").toString(2);
+        responseBody = new String(responseBody.getBytes(StandardCharsets.UTF_8));
+
         // Create a new WireMock stub for the add cart scenario
         WireMock.stubFor(WireMock.post(WireMock.urlPathEqualTo("/cart-items"))
                 .inScenario(scenarioName)
@@ -89,7 +95,7 @@ public class WireMockStatefulBehaviorTestCase {
                 .withRequestBody(WireMock.containing(addCartJson.getJSONObject("request").
                         getJSONArray("bodyPatterns").getJSONObject(0).getString("contains")))
                 .willReturn(ResponseDefinitionBuilder.responseDefinition().withStatus(201)
-                        .withBody(addCartJson.getJSONObject("response").toString(2)))
+                        .withBody(responseBody))
                 .willSetStateTo(addCartJson.getString("newScenarioState")));
 
         // Make a POST request to the /cart-items endpoint with the MicroService Architecture book
@@ -114,12 +120,15 @@ public class WireMockStatefulBehaviorTestCase {
         scenarioName = fullCartJson.getString("scenarioName");
         scenarioState = fullCartJson.getString("requiredScenarioState");
 
+        String responseBody = fullCartJson.getJSONObject("response").toString(2);
+        responseBody = new String(responseBody.getBytes(StandardCharsets.UTF_8));
+
         // Create a new WireMock stub for the full cart scenario
         WireMock.stubFor(WireMock.get(WireMock.urlPathEqualTo("/cart-items"))
                 .inScenario(scenarioName)
                 .whenScenarioStateIs(scenarioState)
                 .willReturn(ResponseDefinitionBuilder.responseDefinition().withStatus(200)
-                        .withBody(fullCartJson.getJSONObject("response").toString(2))));
+                        .withBody(responseBody)));
 
         // Make a GET request to the /cart-items endpoint
         ValidatableResponse response =
@@ -143,12 +152,15 @@ public class WireMockStatefulBehaviorTestCase {
         scenarioName = deleteCartJson.getString("scenarioName");
         scenarioState = deleteCartJson.getString("requiredScenarioState");
 
+        String responseBody = deleteCartJson.getJSONObject("response").toString(2);
+        responseBody = new String(responseBody.getBytes(StandardCharsets.UTF_8));
+
         // Create a new WireMock stub for the delete cart scenario
         WireMock.stubFor(WireMock.delete(WireMock.urlPathEqualTo("/cart-items"))
                 .inScenario(scenarioName)
                 .whenScenarioStateIs(scenarioState)
                 .willReturn(ResponseDefinitionBuilder.responseDefinition().withStatus(204)
-                        .withBody(deleteCartJson.getJSONObject("response").toString(2)))
+                        .withBody(responseBody))
                 .willSetStateTo(deleteCartJson.getString("newScenarioState")));
 
 

@@ -1,6 +1,6 @@
 {
   "scenarioName": "book_shopping",
-  "requiredScenarioState": "Cart has book",
+  "requiredScenarioState": "cart has book",
   "request": {
     "urlPath": "/cart-items",
     "method": "GET"
