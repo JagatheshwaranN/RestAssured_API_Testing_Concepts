@@ -1,7 +1,7 @@
 {
   "scenarioName": "book_shopping",
-  "requiredScenarioState": "cart has book",
-  "newScenarioState": "started",
+  "requiredScenarioState": "Cart has book",
+  "newScenarioState": "Started",
   "request": {
     "urlPath": "/cart-items",
     "method": "DELETE"
