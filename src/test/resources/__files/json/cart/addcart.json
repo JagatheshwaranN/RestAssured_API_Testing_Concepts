@@ -12,6 +12,6 @@
     ]
   },
   "response": {
-    "status": 201
+    "message": "Cart added successfully"
   }
 }

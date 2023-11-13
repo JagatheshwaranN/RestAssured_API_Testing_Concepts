@@ -17,13 +17,15 @@ import java.nio.file.Path;
 
 import static io.restassured.RestAssured.given;
 
-public class WireMockStatefulBehaviorAutomation {
+public class WireMockStatefulBehaviorTestCase {
 
     private static final String HOST = "localhost";
 
     private static final int PORT = 8080;
 
     public static WireMockServer wireMockServer;
+
+    public static String FILE_PATH = System.getProperty("user.dir") + "/src/test/resources/__files/json/cart/";
 
     private String scenarioName;
 
@@ -46,7 +48,7 @@ public class WireMockStatefulBehaviorAutomation {
     @Test(priority = 1)
     public void emptyCart() throws IOException {
         // Read the emptycart.json file
-        JSONObject emptyCartJson = new JSONObject(readJsonFile(System.getProperty("user.dir")+"/src/test/resources/__files/json/emptycart.json"));
+        JSONObject emptyCartJson = new JSONObject(readJsonFile(FILE_PATH + "emptycart.json"));
 
         // Update the scenario name and state from the JSON file
         scenarioName = emptyCartJson.getString("scenarioName");
@@ -60,7 +62,12 @@ public class WireMockStatefulBehaviorAutomation {
                         .withBody(emptyCartJson.getJSONObject("response").toString(2))));
 
         // Make a GET request to the /cart-items endpoint
-        ValidatableResponse response = given().when().get("http://localhost:8080/cart-items").then();
+        ValidatableResponse response =
+                given()
+                .when()
+                        .get("http://localhost:8080/cart-items")
+                .then()
+                        .log().body();
 
         // Assert that the response status code is 200
         Assert.assertEquals(response.extract().statusCode(), 200);
@@ -69,7 +76,7 @@ public class WireMockStatefulBehaviorAutomation {
     @Test(priority = 2)
     public void addCart() throws IOException {
         // Read the addcart.json file
-        JSONObject addCartJson = new JSONObject(readJsonFile(System.getProperty("user.dir")+"/src/test/resources/__files/json/addcart.json"));
+        JSONObject addCartJson = new JSONObject(readJsonFile(FILE_PATH + "addcart.json"));
 
         // Update the scenario name and state from the JSON file
         scenarioName = addCartJson.getString("scenarioName");
@@ -79,11 +86,20 @@ public class WireMockStatefulBehaviorAutomation {
         WireMock.stubFor(WireMock.post(WireMock.urlPathEqualTo("/cart-items"))
                 .inScenario(scenarioName)
                 .whenScenarioStateIs(scenarioState)
-                .withRequestBody(WireMock.containing(addCartJson.getJSONObject("request").getJSONArray("bodyPatterns").getJSONObject(0).getString("contains")))
-                .willReturn(ResponseDefinitionBuilder.responseDefinition().withStatus(201)).willSetStateTo(addCartJson.getString("newScenarioState")));
+                .withRequestBody(WireMock.containing(addCartJson.getJSONObject("request").
+                        getJSONArray("bodyPatterns").getJSONObject(0).getString("contains")))
+                .willReturn(ResponseDefinitionBuilder.responseDefinition().withStatus(201)
+                        .withBody(addCartJson.getJSONObject("response").toString(2)))
+                .willSetStateTo(addCartJson.getString("newScenarioState")));
 
         // Make a POST request to the /cart-items endpoint with the MicroService Architecture book
-        ValidatableResponse response = given().body("MicroService Architecture").when().post("http://localhost:8080/cart-items").then();
+        ValidatableResponse response =
+                given()
+                        .body("MicroService Architecture")
+                .when()
+                        .post("http://localhost:8080/cart-items")
+                .then()
+                        .log().body();
 
         // Assert that the response status code is 201
         Assert.assertEquals(response.extract().statusCode(), 201);
@@ -92,7 +108,7 @@ public class WireMockStatefulBehaviorAutomation {
     @Test(priority = 3)
     public void fullCart() throws IOException {
         // Read the fullcart.json file
-        JSONObject fullCartJson = new JSONObject(readJsonFile(System.getProperty("user.dir")+"/src/test/resources/__files/json/fullcart.json"));
+        JSONObject fullCartJson = new JSONObject(readJsonFile(FILE_PATH + "fullcart.json"));
 
         // Update the scenario name and state from the JSON file
         scenarioName = fullCartJson.getString("scenarioName");
@@ -106,7 +122,12 @@ public class WireMockStatefulBehaviorAutomation {
                         .withBody(fullCartJson.getJSONObject("response").toString(2))));
 
         // Make a GET request to the /cart-items endpoint
-        ValidatableResponse response = given().when().get("http://localhost:8080/cart-items").then();
+        ValidatableResponse response =
+                given()
+                .when()
+                        .get("http://localhost:8080/cart-items")
+                .then()
+                        .log().body();
 
         // Assert that the response status code is 200 and the response body contains the MicroService Architecture book
         Assert.assertEquals(response.extract().statusCode(), 200);
@@ -116,7 +137,7 @@ public class WireMockStatefulBehaviorAutomation {
     @Test(priority = 4)
     public void deleteCart() throws IOException {
         // Read the deletecart.json file
-        JSONObject deleteCartJson = new JSONObject(readJsonFile(System.getProperty("user.dir")+"/src/test/resources/__files/json/deletecart.json"));
+        JSONObject deleteCartJson = new JSONObject(readJsonFile(FILE_PATH + "deletecart.json"));
 
         // Update the scenario name and state from the JSON file
         scenarioName = deleteCartJson.getString("scenarioName");
@@ -126,10 +147,18 @@ public class WireMockStatefulBehaviorAutomation {
         WireMock.stubFor(WireMock.delete(WireMock.urlPathEqualTo("/cart-items"))
                 .inScenario(scenarioName)
                 .whenScenarioStateIs(scenarioState)
-                .willReturn(ResponseDefinitionBuilder.responseDefinition().withStatus(204)).willSetStateTo(deleteCartJson.getString("newScenarioState")));
+                .willReturn(ResponseDefinitionBuilder.responseDefinition().withStatus(204)
+                        .withBody(deleteCartJson.getJSONObject("response").toString(2)))
+                .willSetStateTo(deleteCartJson.getString("newScenarioState")));
+
 
         // Make a DELETE request to the /cart-items endpoint
-        ValidatableResponse response = given().when().delete("http://localhost:8080/cart-items").then();
+        ValidatableResponse response =
+                given()
+                .when()
+                        .delete("http://localhost:8080/cart-items")
+                .then()
+                        .log().body();
 
         // Assert that the response status code is 204
         Assert.assertEquals(response.extract().statusCode(), 204);

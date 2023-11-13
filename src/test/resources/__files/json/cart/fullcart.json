@@ -1,12 +1,11 @@
 {
   "scenarioName": "book_shopping",
   "requiredScenarioState": "Cart has book",
-  "newScenarioState": "Started",
   "request": {
     "urlPath": "/cart-items",
-    "method": "DELETE"
+    "method": "GET"
   },
   "response": {
-    "status": 204
+      "cart": ["MicroService Architecture"]
   }
 }
