@@ -1,0 +1,13 @@
+{
+  "scenarioName": "book_shopping",
+  "requiredScenarioState": "Started",
+  "request": {
+    "urlPath": "/cart-items",
+    "method": "GET"
+  },
+  "response": {
+    "jsonBody": {
+      "cart": []
+    }
+  }
+}

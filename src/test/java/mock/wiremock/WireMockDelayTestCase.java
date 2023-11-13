@@ -66,7 +66,7 @@ public class WireMockDelayTestCase {
         */
 
         // Create a new instance of the UniformDistribution class,which generates a uniformly
-        // distributed delay between 100 milliseconds and 200 milliseconds.
+        // distributed delay between 1000 milliseconds and 3000 milliseconds.
         DelayDistribution uniformDistribution = new UniformDistribution(1000, 3000);
 
         ResponseDefinitionBuilder responseDefinitionBuilder = new ResponseDefinitionBuilder();
@@ -90,9 +90,9 @@ public class WireMockDelayTestCase {
         WireMock.stubFor(WireMock.get("/random/delay").willReturn(responseDefinitionBuilder.withUniformRandomDelay(2000, 4000)));
         ValidatableResponse response =
                 given()
-                        .when()
+                .when()
                         .get("http://localhost:8080/random/delay")
-                        .then()
+                .then()
                         .statusCode(200);
 
         System.out.println(response.extract().asPrettyString());
@@ -106,9 +106,9 @@ public class WireMockDelayTestCase {
         WireMock.stubFor(WireMock.get("/random/delay").willReturn(responseDefinitionBuilder.withLogNormalRandomDelay(1000, 0.1)));
         ValidatableResponse response =
                 given()
-                        .when()
+                .when()
                         .get("http://localhost:8080/random/delay")
-                        .then()
+                .then()
                         .statusCode(200);
 
         System.out.println(response.extract().asPrettyString());
