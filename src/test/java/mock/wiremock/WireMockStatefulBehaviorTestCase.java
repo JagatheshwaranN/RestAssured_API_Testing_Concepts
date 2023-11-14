@@ -23,9 +23,9 @@ public class WireMockStatefulBehaviorTestCase {
 
     private static final int PORT = 8080;
 
-    public static WireMockServer wireMockServer;
+    private static WireMockServer wireMockServer;
 
-    public static String FILE_PATH = System.getProperty("user.dir") + "/src/test/resources/__files/json/cart/";
+    private static final String FILE_PATH = System.getProperty("user.dir") + "/src/test/resources/__files/json/cart/";
 
     private String scenarioName;
 
@@ -159,10 +159,8 @@ public class WireMockStatefulBehaviorTestCase {
         WireMock.stubFor(WireMock.delete(WireMock.urlPathEqualTo("/cart-items"))
                 .inScenario(scenarioName)
                 .whenScenarioStateIs(scenarioState)
-                .willReturn(ResponseDefinitionBuilder.responseDefinition().withStatus(204)
-                        .withBody(responseBody))
+                .willReturn(ResponseDefinitionBuilder.responseDefinition().withStatus(204))
                 .willSetStateTo(deleteCartJson.getString("newScenarioState")));
-
 
         // Make a DELETE request to the /cart-items endpoint
         ValidatableResponse response =
