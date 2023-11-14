@@ -152,9 +152,6 @@ public class WireMockStatefulBehaviorTestCase {
         scenarioName = deleteCartJson.getString("scenarioName");
         scenarioState = deleteCartJson.getString("requiredScenarioState");
 
-        String responseBody = deleteCartJson.getJSONObject("response").toString(2);
-        responseBody = new String(responseBody.getBytes(StandardCharsets.UTF_8));
-
         // Create a new WireMock stub for the delete cart scenario
         WireMock.stubFor(WireMock.delete(WireMock.urlPathEqualTo("/cart-items"))
                 .inScenario(scenarioName)

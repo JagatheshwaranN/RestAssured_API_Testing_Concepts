@@ -1,0 +1,60 @@
+{
+  "request": {
+    "urlPath": "/flights",
+    "queryParameters": {
+      "from": {
+        "matches": ".*"
+      },
+      "to": {
+        "matches": ".*"
+      }
+    },
+    "method": "GET"
+  },
+  "response": {
+    "jsonBody": {
+      "available": [
+        {
+          "flightNumber": "{{randomValue length=5 type='NUMERIC'}}",
+          "airline": "Emirates Airlines",
+          "from": "{{request.query.from}}",
+          "to": "{{request.query.to}}",
+          "departureTime": "{{now offset='-3600 seconds'}}",
+          "arrivalTime": "{{now offset='1 days'}}",
+          "price": "USD{{randomValue length=3 type='NUMERIC'}}"
+        },
+        {
+          "flightNumber": "{{randomValue length=5 type='NUMERIC'}}",
+          "airline": "Cathay Pacific",
+          "from": "{{request.query.from}}",
+          "to": "{{request.query.to}}",
+          "departureTime": "{{now offset='3600 seconds'}}",
+          "arrivalTime": "{{now offset='1 days'}}",
+          "price": "USD{{randomValue length=3 type='NUMERIC'}}"
+        }
+      ],
+      "cancelled": [
+        {
+          "flightNumber": "{{randomValue length=5 type='NUMERIC'}}",
+          "airline": "Jet Airways",
+          "from": "{{request.query.from}}",
+          "to": "{{request.query.to}}",
+          "departureTime": "{{date 'yyyy-MM-dd HH:mm:ss'}}",
+          "cancellationId": "{{randomValue type='UUID'}}",
+          "cancellationReason": "Weather Conditions",
+          "price": "USD{{randomValue length=3 type='NUMERIC'}}"
+        },
+        {
+          "flightNumber": "{{randomValue length=5 type='NUMERIC'}}",
+          "airline": "Air Asia",
+          "from": "{{request.query.from}}",
+          "to": "{{request.query.to}}",
+          "departureTime": "{{date 'yyyy-MM-dd HH:mm:ss'}}",
+          "cancellationId": "{{randomValue type='UUID'}}",
+          "cancellationReason": "Maintenance",
+          "price": "USD{{randomValue length=3 type='NUMERIC'}}"
+        }
+      ]
+    }
+  }
+}
