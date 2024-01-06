@@ -1,5 +1,7 @@
 package log;
 
+import io.restassured.config.LogConfig;
+import io.restassured.config.RestAssuredConfig;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
@@ -54,6 +56,18 @@ public class LogBasedOnConditionTestCase {
                 .get("https://reqres.in/api/users/2")
         .then()
                 .log().ifStatusCodeMatches(Matchers.equalTo(200));
+    }
+
+    @Test(priority = 5)
+    public void generateLogWhenValidationFailUsingConfig(){
+
+        given()
+                .config(RestAssuredConfig.config().logConfig(LogConfig.logConfig().enableLoggingOfRequestAndResponseIfValidationFails()))
+        .when()
+                .get("https://reqres.in/api/users/2")
+        .then()
+                .statusCode(200)
+                .body("data.id", equalTo(1));
     }
 
 }
