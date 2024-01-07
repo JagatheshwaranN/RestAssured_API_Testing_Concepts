@@ -3,14 +3,15 @@ package headers;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.ValidatableResponse;
-import static io.restassured.RestAssured.*;
 import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.given;
 
 /**
  * @restapi
  * @get
  */
-public class ResponseHeadersTestCase {
+public class ExtractResponseHeadersTestCase {
 
     @Test(priority = 1)
     public void getResponseHeaderInfo(){
@@ -40,4 +41,5 @@ public class ResponseHeadersTestCase {
             System.out.println(header.getName()+ " : "+header.getValue());
         }
     }
+
 }

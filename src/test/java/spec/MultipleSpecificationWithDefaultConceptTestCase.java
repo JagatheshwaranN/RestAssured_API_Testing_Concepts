@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.with;
+import static io.restassured.RestAssured.get;
 
 public class MultipleSpecificationWithDefaultConceptTestCase {
 
@@ -29,6 +30,16 @@ public class MultipleSpecificationWithDefaultConceptTestCase {
         .when()
                 .get("/1")
         .then()
+                .statusCode(200)
+                .log()
+                .body();
+    }
+
+    @Test(priority = 2)
+    public void getSingleEmployeeType2(){
+
+                get("/1")
+                .then()
                 .statusCode(200)
                 .log()
                 .body();

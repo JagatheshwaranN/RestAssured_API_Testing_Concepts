@@ -19,6 +19,14 @@ public class SpecUsingRequestSpecBuilderTestCase {
                 .setBaseUri("http://localhost:3000")
                 .setBasePath("/employees")
                 .build();
+
+        /*
+            Another way to do request specification
+            =======================================
+            requestSpecBuilder.setBaseUri("http://localhost:3000");
+            requestSpecBuilder.setBasePath("/employees");
+            RestAssured.requestSpecification = requestSpecBuilder.build();
+        */
     }
 
     @Test(priority = 1)
