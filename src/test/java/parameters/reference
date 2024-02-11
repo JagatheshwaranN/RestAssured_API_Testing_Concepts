@@ -1,0 +1,35 @@
+multiPart() and formParam() are not the same in RestAssured
+===========================================================
+multiPart() method:
+===================
+multiPart() is used for sending multipart/form-data requests, typically used when uploading
+files through a form.
+It is used in scenarios where you want to simulate the process of submitting a form that
+includes files to be uploaded.
+This method is often used in combination with the .post() or .put() methods when you need
+to upload files along with other form data.
+
+RestAssured.given()
+    .multiPart("file", new File("/path/to/file.txt"))
+    .formParam("param1", "value1")
+    .formParam("param2", "value2")
+    .when()
+    .post("/upload");
+
+formParam() method:
+===================
+formParam() is used for sending form parameters in the request body, typically when making
+POST or PUT requests with form data.
+It is used to set key-value pairs of form parameters.
+This method is commonly used when you need to submit data in a request body in a format
+similar to submitting an HTML form.
+
+RestAssured.given()
+    .formParam("param1", "value1")
+    .formParam("param2", "value2")
+    .when()
+    .post("/submitForm");
+
+In summary, multiPart() is primarily used for file uploads, while formParam() is used for
+sending form parameters in the request body. Depending on your use case, you may use one or
+both methods in a given request.
