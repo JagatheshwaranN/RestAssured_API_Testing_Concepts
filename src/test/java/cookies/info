@@ -1,0 +1,25 @@
+Cookie
+======
+Types
+=====
+1. Session Cookie
+=================
+Session Cookie is used to maintain the user session.
+
+2. Persistent Cookie
+====================
+Persistent Cookie is something which can be used even the user session is closed. It has its own expiry.
+
+3. Secure Cookie
+================
+Secure Cookie is used only with Https protocol.
+
+4. Http-Only Cookie
+===================
+Http-Only Cookie is something which can't be read by JS program running on Client side. So, if a Cookie
+is set with Http-Only then it will add some security.
+
+5. Same Site Cookie
+===================
+SameSite Cookie is a single domain Cookie. For example, if a Cookie is set for xyz domain and it can't
+be used for another domain.
