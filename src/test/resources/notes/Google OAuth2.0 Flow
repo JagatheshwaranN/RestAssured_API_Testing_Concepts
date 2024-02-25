@@ -1,0 +1,237 @@
+Google OAuth 2.0
+================
+1. Navigate to the URL -> https://developers.google.com/identity/protocols/oauth2
+
+Create Gmail Account
+====================
+2. Navigate to the Gmail.com.
+3. Create an gmail account.
+4. Login to created Gmail account and compose few dummy emails.
+
+Create Client App
+=================
+5. Navigate to the URL -> https://developers.google.com/identity/protocols/oauth2
+6. Click on GoogleAPIConsole link and it will redirect to Google Cloud Platform.
+7. Note: Gmail login should be needed to land on the GCP.
+8. After successful login to GCP, Dashboard is displayed with Create Project option on top right corner.
+9. Click on Create Project and it will show the notification that we can create 12 projects.
+10. Enter the name of the project and click Create button.
+11. Project will be created and able to view the project dashboard showcasing Traffic /Errors /Median latency sections.
+
+Enable Gmail API
+================
+12. Click on Library option on the left side navigation bar options.
+13. API library section will display.
+14. Search for Gmail API on the search bar and you will see the Gmail API listed down in the result section.
+15. Click on the Gmail API and it will redirect to the Gmail API details page.
+16. Click on Enable button on the Gmail API details page.
+17. Navigate back to the Project dashboard page.
+
+Create Consent Screen
+=====================
+18. Click on OAuth Consent screen option on the left side navigation bar options.
+19. OAuth consent screen section will display with User Type with 2 options such as Internal and External.
+20. Click on External radio button and click on Create button. It will redirect to Edit App Registration page.
+21. In Edit App Registration page section we will have 4 sections such as OAuth Consent Screen, Scopes, Test Users and Summary.
+22. Under OAuth Consent Screen section, Add the App Name, User Support Email(Created Gmail account), and add Developer contact information(Created Gmail account).
+23. Click on Save and Continue. It will move to the next section - Scopes.
+24. Under Scopes section, Click on Add or Remove Scopes button, it will open Update Selected Scopes screen.
+25. Select the userinfo.email, userinfo.profile, and https://mail.google.com/ scopes and click on Update button.
+26. You can see the selected scopes on the page as Your non-sensitive scopes and Your restricted scopes.
+27. Click on Save and Continue. It will move to the next section - Test Users.
+28. Under Test Users section, Click on Add Users button. It will show Add Users screen.
+29. Enter the test user email (Created Gmail Account) and click on Add button.
+30. You can view the added test user detail.
+31. Click on Save and Continue. It will move to the next section - Summary.
+32. Under summary section, verify the provided details and click on Back to Dashboard button.
+
+Create Client Credentials
+=========================
+33. Click on Credentials option on the left side navigation bar options.
+34. It will navigate to the Credentials section.
+35. Click on Create Credentials option on the top navigation.
+36. Click on OAuth Client ID and create OAuth Client ID section will display.
+37. Select the application type as Web Application.
+38. Under name section, provide the name for the application.
+39. Under Authorized Redirect URIs section, click on Add URIs and enter https://localhost:8080 (For testing purposes).
+40. Click on Create button.
+41. OAuth Client create popup will display. You can find the Client ID and Client Secret.
+42. Copy the Client ID and Client Secret. And click on OK button.
+43. Created Client ID will be displayed under OAuth 2.0 Client IDs.
+
+Authorize App (To fetch the Authorization Code)
+=============
+44. Navigate back to the URL -> https://developers.google.com/identity/protocols/oauth2
+45. Click on ServerSide Web Apps section on the left side navigation bar options.
+46. Scroll down till you find the HTTP/REST URL (https://accounts.google.com/o/oauth2/v2/auth.
+47. The above Endpoint has sample params, copy the same and paste it in Postman.
+48. Update the Scope, Redirect URL and Client ID details and keep the rest as mentioned values.
+49. After updating the values, copy the complete Endpoint and save the request in Postman.
+50. Navigate to Browser, and open new tab and hit the created Endpoint.
+51. After hitting the Endpoint, the Gmail login screen will display.
+52. Choose the account to login to the Client Application.
+53. You will be redirected to Next page where you can see message like Google hasn't verified this app
+54. Click on Continue and Google will show popup asking Grant Client App permission
+55. Click on Allow and it will redirect to next page where you will be asked to confirm the choice.
+56. Click on Allow and you will see the Site Can't be Reached error. (As we don't have original Client App)
+57. In the error page url, we will have code="***Some value***". Its the authorize code.
+58. Copy and save the code for future Endpoint hits.
+
+Get Access Token and Refresh Token
+==================================
+59. Navigate back to the URL -> https://developers.google.com/identity/protocols/oauth2
+60. Click on ServerSide Web Apps section on the left side navigation bar options.
+61. Scroll down till you find Exchange authorization code for refresh and access tokens section.
+62. Under the above section, you can find the HTTP/REST URL (https://oauth2.googleapis.com/token).
+63. The above Endpoint has sample params, copy the same and paste it in Postman.
+64. The request should be POST.
+65. Navigate to body section and select the x-www-form-urlencoded option.
+66. Add the key and values.
+67. The Key-Value pairs are Client ID, Client Secret, Code, Grant_Type and Redirect URL.
+68. Hit the Endpoint and you will get the Access Token and Refresh Token as response.
+
+Renew Access Token
+==================
+69. Navigate back to the URL -> https://developers.google.com/identity/protocols/oauth2
+70. Click on ServerSide Web Apps section on the left side navigation bar options.
+71. Scroll down till you find Refreshing an access token section.
+72. Under the above section, you can find the HTTP/REST URL (https://oauth2.googleapis.com/token).
+73. The above Endpoint has sample params, copy the same and paste it in Postman.
+74. The request should be POST.
+75. Navigate to body section and select the x-www-form-urlencoded option.
+76. Add the key and values.
+77. The Key-Value pairs are Client ID, Client Secret, Grant_Type and Refresh Token.
+78. Hit the Endpoint and you will get the Access Token and Refresh Token as response.
+
+Execute Gmail GetUserProfile API
+================================
+79. Navigate to the URL -> https://developers.google.com/gmail/api/reference/rest
+80. Under the left side navigation, click on Users -> getProfile
+81. It will show the details related to Gmail GetUserProfile API.
+82. Copy the Endpoint GET (https://gmail.googleapis.com/gmail/v1/users/{userId}/profile)
+83. Update the Endpoint in Postman and update the UserId field with valid Gmail User Id.
+84. Navigate to the Headers section and add the Authorization header.
+85. It should be like Authorization as key and Bearer AccessToken as value.
+86. Hit the API and you will get the response.
+
+Execute Gmail Send API
+======================
+87. Navigate to the URL -> https://developers.google.com/gmail/api/reference/rest
+88. Under the left side navigation, click on Users.Messages -> send
+89. It will show the details related to Gmail Send API.
+90. Copy the Endpoint POST (https://gmail.googleapis.com/gmail/v1/users/{userId}/messages/send)
+91. Update the Endpoint in Postman and update the UserId field with valid Gmail User Id.
+92. Navigate to the Headers section and add the Authorization header.
+93. Under body section, you have added the payload in RFC 2822 format.
+94. Sample payload,
+	From: abc@gamil.com
+	To: xyz@gmail.com
+	Subject: Test Email
+
+	Test Email from API.
+95. After preparing the request payload.
+96. Navigate to the URL -> https://ostermiller.org/calc/encode.html
+97. Copy the request payload and choose Base64 Encode to convert the request payload to Base64 encoded string to form RFC 2822.
+98. Copy the Base64 encoded string and navigate back to Postman.
+99. Move to the body section and select the raw type.
+100. Add the below converted Base64 encoded string in below format.
+	 {
+		"raw":"riwhrihskgjkgigeeijkgndjkgebgjkenkgnighwgigogiigdnjksdgnbjk"
+	 }
+101. Hit the API and you will get the response.
+
+Implicit Grant Flow
+===================
+1. Navigate back to the URL -> https://developers.google.com/identity/protocols/oauth2
+2. Click on Javascript Web Apps section on the left side navigation bar options.
+3. Scroll down till you find Redirect to Google's OAuth 2.0 server section.
+4. Scroll down till you find the HTTP/REST URL (https://accounts.google.com/o/oauth2/v2/auth.
+5. The above Endpoint has sample params, copy the same and paste it in Postman.
+6. Update the Scope, Redirect URL, Client ID, and Response_Type details and keep the rest as mentioned values.
+7. After updating the values, copy the complete Endpoint and save the request in Postman.
+8. Navigate to Browser, and open new tab and hit the created Endpoint.
+9. After hitting the Endpoint, you will see the Site Can't be Reached error. (As we don't have original Client App)
+10. In the error page url, we will have access_token="***Some value***".
+11. Copy and save the access_token for future Endpoint hits.
+
+Execute Gmail GetUserProfile API
+================================
+12. Navigate to the URL -> https://developers.google.com/gmail/api/reference/rest
+13. Under the left side navigation, click on Users -> getProfile
+14. It will show the details related to Gmail GetUserProfile API.
+15. Copy the Endpoint GET (https://gmail.googleapis.com/gmail/v1/users/{userId}/profile)
+16. Update the Endpoint in Postman and update the UserId field with valid Gmail User Id.
+17. Navigate to the Headers section and add the Authorization header.
+18. It should be like Authorization as key and Bearer AccessToken as value.
+19. Hit the API and you will get the response.
+
+Execute Gmail Send API
+======================
+20. Navigate to the URL -> https://developers.google.com/gmail/api/reference/rest
+21. Under the left side navigation, click on Users.Messages -> send
+22. It will show the details related to Gmail Send API.
+23. Copy the Endpoint POST (https://gmail.googleapis.com/gmail/v1/users/{userId}/messages/send)
+24. Update the Endpoint in Postman and update the UserId field with valid Gmail User Id.
+25. Navigate to the Headers section and add the Authorization header.
+26. Under body section, you have added the payload in RFC 2822 format.
+27. Sample payload,
+	From: abc@gamil.com
+	To: xyz@gmail.com
+	Subject: Test Email
+
+	Test Email from API.
+28. After preparing the request payload.
+29. Navigate to the URL -> https://ostermiller.org/calc/encode.html
+30. Copy the request payload and choose Base64 Encode to convert the request payload to Base64 encoded string to form RFC 2822.
+31. Copy the Base64 encoded string and navigate back to Postman.
+32. Move to the body section and select the raw type.
+33. Add the below converted Base64 encoded string in below format.
+	 {
+		"raw":"riwhrihskgjkgigeeijkgndjkgebgjkenkgnighwgigogiigdnjksdgnbjk"
+	 }
+34. Hit the API and you will get the response.
+
+OpenID Connect
+==============
+1. Navigate back to the URL -> https://developers.google.com/identity/protocols/oauth2
+2. Click on OpenID Connect section on the left side navigation bar options.
+3. Scroll down till you find Authenticating the user section.
+4. Scroll down till you find the Send an authentication request to Google (HTTP/REST URL (https://accounts.google.com/o/oauth2/v2/auth.)
+5. The above Endpoint has sample params, copy the same and paste it in Postman.
+6. Update the Scope, Redirect URL, Client ID, State, hd details and keep the rest as mentioned values.
+7. For scope, you have to append the value with existing value with %20 (which stands for /).
+8. For state, you have change the example.com to gmail.com.
+9. Remove the login_hint and keep the nonce.
+10. For hd, you have change the example.com to gmail.com.
+11. After updating the values, copy the complete Endpoint and save the request in Postman.
+12. Navigate to Browser, and open new tab and hit the created Endpoint.
+13. After hitting the Endpoint, the Gmail login screen will display.
+14. Choose the account to login to the Client Application.
+15. You will see the Site Can't be Reached error. (As we don't have original Client App)
+16. In the error page url, we will have code="***Some value***". Its the authorize code.
+17. Copy and save the code for future Endpoint hits.
+
+Exchange Code for Access Token and ID Token
+==========================================
+18. Navigate back to the URL -> https://developers.google.com/identity/protocols/oauth2
+19. Click on OpenID Connect section on the left side navigation bar options.
+20. Scroll down till you find Exchange Code for Access Token and ID Token section.
+21. Under the above section, you can find the HTTP/REST URL (https://oauth2.googleapis.com/token).
+22. The above Endpoint has sample params, copy the same and paste it in Postman.
+23. The request should be POST.
+24. Navigate to body section and select the x-www-form-urlencoded option.
+25. Add the key and values.
+26. The Key-Value pairs are Client ID, Client Secret, Code, Grant_Type and Redirect URL.
+27. Update the code which is retrieved in step 17.
+28. Verify the code has %2F value and if its there, replace it with /.
+29. Hit the Endpoint and you will get the Access Token and Refresh Token as response.
+30. In the response, you will get the Access Token and Id Token.
+31. The ID Token is  JWT token. Navigate to jwt.io site.
+32. Copy the Id Token and paste it in the site to decode the Token.
+33. The decoded token should have 3 sections such as Header, Payload and Verify Signature.
+34. You can use the access token for your work. Id Token is only for authentication purpose.
+
+PlayGround Link
+===============
+1. Navigate to the URL -> https://developers.google.com/oauthplayground/
+2. Under Select & authorize APIs -> Check for Gmail API v1
