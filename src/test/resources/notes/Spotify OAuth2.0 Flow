@@ -1,0 +1,126 @@
+Spotify OAuth2.0 Flow
+=====================
+1. Create account with Spotify.
+2. Login to Spotify.
+3. Navigate to the URL -> https://developer.spotify.com/documentation/web-api/.
+Register App
+============
+4. Click on concepts option on left navigation bar.
+5. Click on Apps and navigate to Apps page.
+6. Click on Dashboard link on the Apps page.
+7. It will redirect to URL -> https://developer.spotify.com/dashboard.
+8. Click on Create App button and create App.
+9. Fill up the App Name, Description, Redirect URL, and check the terms and conditions.
+10. Click on save.
+11. It will redirect to App Home Page where you can see All Stats, Active Users, Endpoints, Locations.
+12. Click on Setting button and it will show Basic information section.
+13. Copy the Client ID.
+14. Click on view Client Secret and copy the same.
+15. Navigate to the URL -> https://developer.spotify.com/documentation/web-api/.
+Authorize App
+=============
+16. Click on Concepts -> Authorization and Authorization page will open.
+17. Click on Authorization code link.
+18. It will redirect to Authorization Code Flow page.
+19. You can have the example to create the Endpoint to get the authorize flow.
+20. Endpoint: https://accounts.spotify.com/authorize (GET)
+21. You will also have the query params listed which need to send with the Endpoint.
+22. Copy the Endpoint and Params, navigate to the Postman and construct the complete Endpoint.
+23. The params should be Client_Id, Response_Type, Redirect_URI, Scope and State.
+24. For Client_Id use the id generated while created the App.
+25. For Response_Type should be code.
+26. For Redirect_URI should be one which you have provided while creating the App.
+27. For Scope, Navigate to the URL -> https://developer.spotify.com/documentation/web-api/.
+28. Click on Concepts -> Scopes and Scopes page will open.
+29. Copy the scopes for Playlist API as we are going to automate the same.
+30. Prepare the scope values with space separated - playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public
+31. For State, set this value 34fFs29kd09.
+32. Now, copy the constructed Endpoint from Postman.
+33. Navigate to the Browser and past the Endpoint and hit it.
+34. Spotify app consent page will display where you can see your App name, click on Agree.
+35. It will redirect to Can't reach error page as we don't have working App.
+36. Copy the error page url from Browser and extract the code="**Some Value**"
+37. Save the copied code value for future uses. This code is called as the Authorization code.
+Fetch Access Token and Refresh Token
+====================================
+38. Navigate to the URL -> https://developer.spotify.com/documentation/web-api/.
+39. Click on Concepts -> Authorization and Authorization page will open.
+40. Click on Authorization code link.
+41. It will redirect to Authorization Code Flow page.
+42. Scroll down until you find "Request an access token" section.
+43. You can have the example to create the Endpoint to get the access token.
+44. Endpoint: https://accounts.spotify.com/api/token (POST)
+45. You will also have the query params listed which need to send with the Endpoint.
+46. Copy the Endpoint and Params, navigate to the Postman and construct the complete Endpoint.
+47. The params should be Grant_Type, Code, Redirect_URI, Authorization<Base64 encoded ClientID:ClientSecret>.
+48. For Authorization, we can send the Client Id and Client Secret as payload.
+49. For Client_Id use the id generated while created the App.
+50. For Client_Secret use the secret generated while created the App.
+51. For Grant_Type, it should be authorization_code.
+52. For Code, it should be the Authorization Code which we got in below endpoint as response.
+53. For Redirect_URI should be one which you have provided while creating the App.
+54. Hit the Endpoint and you will get the Access Token and Refresh Token as response.
+55. Extract the access token and refresh token and save it for future purposes.
+Renew Access Token
+==================
+56. In the same Authorization Code Flow page, scroll down till you find "refresh token" link.
+57. It will redirect to "Refreshing tokens" page.
+58. you have to use the same Endpoint: https://accounts.spotify.com/api/token (POST)
+59. You will also have the query params listed which need to send with the Endpoint.
+60. For Client_Id use the id generated while created the App.
+61. For Client_Secret use the secret generated while created the App.
+62. For Grant_Type, it should be refresh_token.
+63. For Refresh_Token, use the refresh token retrieved from the previous "Fetch Access Token and Refresh Token" section.
+64. Copy the Endpoint and Params, navigate to the Postman and construct the complete Endpoint.
+65. Hit the Endpoint and you will get the new Access Token as response.
+66. Extract the access token and save it for future purposes.
+Create Playlist API Execution
+=============================
+67. Navigate to the URL -> https://developer.spotify.com/documentation/web-api/.
+68. Scroll to Reference section and navigate playlists option.
+69. Click on playlists option. It will display all the Endpoints.
+70. Click on Create Playlist option and it will Create Playlist API Endpoint page.
+71. Copy the Create Playlist Endpoint and navigate to Postman.
+72. In endpoint, we need User Id to update.
+73. To get the User Id, Navigate to the URL -> https://developer.spotify.com/documentation/web-api/.
+74. Scroll to Reference section and navigate users option.
+75. Click on Get Current User's Profile option.
+76. It will Get Current User's Profile Endpoint page.
+77. Click on Try it button on top right corner to execute the Endpoint from Web.
+78. After execution of Endpoint, you will receive the response and you will get Id from response.
+79. Copy the Id and save it for future purposes.
+80. Navigate back to Postman and update the Endpoint with user id value.
+81. Scroll to Reference section and navigate playlists option.
+82. Click on playlists option. It will display all the Endpoints.
+83. Click on Create Playlist option and it will Create Playlist API Endpoint page.
+84. You will find the sample request body. Copy and paste the same in Postman.
+85. Update the same request body as per choice.
+86. Add the Authorization header. The value should be Bearer <access token>.
+87. Set the content type to application/json.
+88. Hit the Endpoint and you should get the 201 response.
+Get Playlist
+============
+89. Navigate to the URL -> https://developer.spotify.com/documentation/web-api/.
+90. Scroll to Reference section and navigate playlists option.
+91. Click on playlists option. It will display all the Endpoints.
+92. Click on Get Playlist option and it will Get Playlist API Endpoint page.
+93. Copy the Get Playlist Endpoint and navigate to Postman.
+94. We need the Playlist id to update in the Endpoint to hit.
+95. For Playlist id, refer the Create Playlist response.
+96. Get the Playlist id and update in the Endpoint.
+97. Add the Authorization header. The value should be Bearer <access token>.
+98. Hit the Endpoint and you should get the 200 response.
+Update Playlist (Change Playlist Details)
+=========================================
+99. Navigate to the URL -> https://developer.spotify.com/documentation/web-api/.
+100. Scroll to Reference section and navigate playlists option.
+101. Click on playlists option. It will display all the Endpoints.
+102. Click on Get Playlist option and it will Get Playlist API Endpoint page.
+103. Copy the Get Playlist Endpoint and navigate to Postman.
+104. We need the Playlist id to update in the Endpoint to hit.
+105. For Playlist id, refer the Create Playlist response.
+106. Get the Playlist id and update in the Endpoint.
+107. You will find the sample request body. Copy and paste the same in Postman.
+108. Update the same request body as per choice.
+109. Add the Authorization header. The value should be Bearer <access token>.
+110. Hit the Endpoint and you should get the 200 response.
