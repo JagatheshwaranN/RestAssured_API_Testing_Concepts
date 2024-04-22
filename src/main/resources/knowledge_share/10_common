@@ -1,0 +1,127 @@
+Questions
+=========
+
+1. Difference between API and WebService:
+An API (Application Programming Interface) is a set of rules and protocols that allows different
+software applications to communicate with each other. It defines how different components of software
+systems should interact. A web service is a type of API that is accessible over the internet using
+standard web protocols such as HTTP. It enables communication between different applications or systems
+over a network.
+
+2. Difference between SOAP & Rest API:
+SOAP (Simple Object Access Protocol) and REST (Representational State Transfer) are both web service
+architectures used for communication between systems. SOAP is a protocol that uses XML as its message
+format and typically operates over HTTP, SMTP, or TCP. It is more rigid and requires more bandwidth
+compared to REST. REST, on the other hand, is an architectural style that uses a simpler message
+format such as JSON or XML and relies on standard HTTP methods like GET, POST, PUT, DELETE for
+communication. It is lightweight, scalable, and more flexible than SOAP.
+
+3. Sample of API (URL) and JSON:
+API URL: https://api.example.com/users
+JSON sample:
+json
+Copy code
+{
+  "id": 1,
+  "name": "John Doe",
+  "email": "john@example.com"
+}
+
+4. Handling Authentication token:
+Authentication tokens can be handled in REST Assured by including them in the request headers using
+the header() method. For example:
+given().header("Authorization", "Bearer <token>").get("/endpoint");
+
+5. Types of Authentication in POSTMAN/Rest-Assured:
+In POSTMAN/Rest-Assured, common types of authentication include
+1. Basic Authentication,
+2. Digest Authentication,
+3. OAuth 1.0,
+4. OAuth 2.0,
+5. API Key Authentication, and
+6. Bearer Token Authentication.
+
+6. Difference between OAuth1.0 and OAuth2.0, with sample code:
+OAuth 1.0 is an older version of the OAuth protocol that requires cryptographic signatures for
+authentication. OAuth 2.0 is a newer version that relies on tokens for authentication and is more
+widely used. Sample code for OAuth 2.0:
+given()
+    .auth().oauth2("access_token")
+    .get("/endpoint");
+
+7. BaseURI in RestAssured:
+baseURI in RestAssured is a static variable that specifies the base URL of the API that will be
+used for all requests. It eliminates the need to specify the full URL in each request and allows
+for cleaner and more maintainable code.
+
+8. Explanation of RequestSpecification request = RestAssured.given():
+RequestSpecification in RestAssured is used to specify various aspects of an HTTP request, such as
+headers, parameters, authentication, etc. RestAssured.given() is a static method that returns an
+instance of RequestSpecification to build and configure HTTP requests.
+
+9. Returned type of response.jsonPath().getJsonObject("XYZ"):
+The returned type of response.jsonPath().getJsonObject("XYZ") is a JSON object containing the value
+of the key "XYZ" extracted from the response JSON.
+
+10. Extracting values of JSON and validating response:
+Values of JSON can be extracted using JSONPath expressions or by converting the response to a POJO
+(Plain Old Java Object). To validate a response, assertions can be used to verify status codes, headers,
+and specific data in the response body.
+
+11. Code to save the response in a JSON file:
+Response response = given().get("/endpoint");
+response.then().statusCode(200); // Validate status code if needed
+String responseBody = response.getBody().asString();
+try (FileWriter file = new FileWriter("response.json")) {
+    file.write(responseBody);
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+12. Validating headers of response:
+Response response = given().get("/endpoint");
+response.then().assertThat().header("Content-Type", "application/json");
+
+13. Difference between Headers and Header class:
+Headers represents a collection of HTTP headers in REST Assured, while Header represents an individual
+HTTP header.
+
+14. Difference between response.header("xyz") and response.headers() methods:
+response.header("xyz") returns the value of a specific header named "xyz", while response.headers()
+returns all headers as a map.
+
+15. Extracting all headers from response at runtime:
+Response response = given().get("/endpoint");
+Headers allHeaders = response.getHeaders();
+
+16. Explanation of various methods:
+1. JSONObject() is a class used to create JSON objects in Java.
+2. request.header("xyz") retrieves the value of the header "xyz" from the request.
+3. response.path("label") retrieves the value of the JSON path "label" from the response body.
+4. response.body().asString() converts the response body to a string.
+5. response.getBody().prettyPrint() prints the response body in a formatted (pretty-printed) manner.
+6. RestAssured.given().queryParam("xyz","abc") sets a query parameter "xyz" with value "abc" in the request.
+
+17. Difference between request.get() and request.request(Method.GET,"/ allcustomers "):
+request.get("https://example.com") sends a GET request to the specified URL, while
+request.request(Method.GET, "/allcustomers") sends a GET request to the specified path
+relative to the base URI.
+
+18. Difference between PUT and Patch and their usage:
+PUT is used to update a resource completely, while PATCH is used to apply partial modifications to a
+resource. PUT replaces the entire resource with the new data, whereas PATCH updates only specific fields
+of the resource.
+
+19. Status codes (2xx, 3xx, 4xx, 5xx) in API:
+1. 2xx status codes indicate success (e.g., 200 OK).
+2. 3xx status codes indicate redirection.
+3. 4xx status codes indicate client errors (e.g., 404 Not Found).
+4. 5xx status codes indicate server errors (e.g., 500 Internal Server Error).
+
+20. Printing response in JSON format:
+You can print the response in JSON format using response.getBody().prettyPrint().
+
+21. Posting body in POST and ways to post:
+You can post a body in a POST request using methods like body() or with(). Ways to post include sending
+JSON, XML, or form data in the body.
+
