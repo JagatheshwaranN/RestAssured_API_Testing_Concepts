@@ -146,6 +146,19 @@ locally or in memory. Subsequent requests to the same endpoint can then be serve
 than making a new request to the server. This is particularly useful when testing APIs that have a large
 volume of repetitive requests or when executing test suites with a high number of requests.
 
+Browser caching: The browser stores a copy of the data in its cache, which can be used to serve subsequent
+requests for the same data.
+
+Proxy caching: A proxy server sits between the client and the server, and stores a copy of the data in its
+cache. When the client requests the data, the proxy can serve it from the cache instead of forwarding the
+request to the server.
+
+Content Delivery Network (CDN) caching: A CDN stores a copy of the data in its cache, which can be served
+to clients from a location that is closer to them, reducing the response time and network traffic.
+
+Application caching: The application stores a copy of the data in memory or on disk, which can be used to
+serve subsequent requests for the same data.
+
 25. What is the best way to ensure that private information isn't included in the login process in Rest
 Assured API Testing?
 Blacklisting Sensitive Headers:
@@ -251,3 +264,44 @@ given().get("/api/endpoint")
     }
 });
 
+33. What protocol is utilized by RESTful Web Services?
+RESTful web services typically utilize the HTTP (Hypertext Transfer Protocol) as the underlying protocol
+for communication. HTTP is the standard protocol for data transmission on the World Wide Web and provides
+a simple and lightweight way for clients to request and interact with resources on a web server.
+
+34. What is the maximum size of a payload that can be sent via the POST method?
+The HTTP specification does not specify a maximum size for posts. They are typically constrained by the
+web server or the programming technology used to process form submissions.
+
+35. Describe REST.
+REST (Representational State Transfer) is a set of rules and guidelines that describe how web-based
+applications should communicate with each other. REST defines a standard way of making requests to a
+web server using HTTP, which is the protocol used by web browsers to communicate with servers.
+
+RESTful web services make it easier for different software systems and devices to communicate with each
+other over the internet. These web services are based on a uniform interface, which includes HTTP verbs
+such as GET, POST, PUT, and DELETE.
+
+The main advantage of using RESTful web services is that they are scalable and adaptable, making it easier
+to develop and maintain web applications. They are widely used in modern web development and can be used
+to build applications for different types of devices, such as computers, smartphones, and tablets.
+
+36. What procedures and techniques are used to verify the REST API response in Rest Assured?
+Status code validation: Rest Assured provides an assertion method called statusCode() that allows you to
+verify the HTTP status code of the response. For example, you can use statusCode(200) to ensure that the
+response status code is 200 (OK).
+
+Header validation: Rest Assured provides assertion methods for verifying specific headers in the response,
+such as header("Content-Type", "application/json") to check if the "Content-Type" header is set to
+"application/json".
+
+Body validation: Rest Assured provides several assertion methods for validating the response body.
+
+Response time validation: Rest Assured provides an assertion method called time() that allows you to
+verify the response time of the API call.
+
+Cookie validation: Rest Assured provides assertion methods for validating cookies in the response, such
+as cookie("session_id", "12345") to check if the "session_id" cookie is set to "12345".
+
+Schema validation: Rest Assured allows you to perform schema validation on the response using tools like
+JsonSchemaValidator or XmlSchemaValidator.
