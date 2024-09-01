@@ -1,0 +1,92 @@
+{
+  "students": [
+    {
+      "id": "S123456",
+      "name": "John Doe",
+      "major": "Computer Science",
+      "contact": {
+        "email": "john.doe@example.com",
+        "phone": "+1234567890"
+      },
+      "courses": [
+        { "courseId": "CS101", "grade": "A" },
+        { "courseId": "MATH201", "grade": "B+" }
+      ],
+      "scholarship": {
+        "name": "Presidential",
+        "amount": 5000
+      },
+      "emergencyContact": {
+        "name": "Jane Doe",
+        "relationship": "Mother",
+        "phone": "+1234567891"
+      }
+    },
+    {
+      "id": "S654321",
+      "name": "Alice Smith",
+      "major": "Electrical Engineering",
+      "contact": {
+        "email": "alice.smith@example.com",
+        "phone": "+1234567893"
+      },
+      "courses": [
+        { "courseId": "EE201", "grade": "A-" },
+        { "courseId": "PHYS101", "grade": "B" }
+      ],
+      "scholarship": {
+        "name": "Dean's List",
+        "amount": 3000
+      },
+      "emergencyContact": {
+        "name": "Bob Smith",
+        "relationship": "Father",
+        "phone": "+1234567894"
+      }
+    },
+    {
+      "id": "S987654",
+      "name": "Michael Johnson",
+      "major": "Mechanical Engineering",
+      "contact": {
+        "email": "michael.johnson@example.com",
+        "phone": "+1234567895"
+      },
+      "courses": [
+        { "courseId": "MECH301", "grade": "B+" },
+        { "courseId": "MATH301", "grade": "A" }
+      ],
+      "scholarship": {
+        "name": "Sports Scholarship",
+        "amount": 4000
+      },
+      "emergencyContact": {
+        "name": "Sarah Johnson",
+        "relationship": "Mother",
+        "phone": "+1234567896"
+      }
+    },
+    {
+      "studentId": "S112233",
+      "name": "Emily Davis",
+      "major": "Biology",
+      "contact": {
+        "email": "emily.davis@example.com",
+        "phone": "+1234567897"
+      },
+      "courses": [
+        { "courseId": "BIO101", "grade": "A" },
+        { "courseId": "CHEM101", "grade": "B+" }
+      ],
+      "scholarship": {
+        "name": "Academic Excellence",
+        "amount": 4500
+      },
+      "emergencyContact": {
+        "name": "Mark Davis",
+        "relationship": "Father",
+        "phone": "+1234567898"
+      }
+    }
+  ]
+}
