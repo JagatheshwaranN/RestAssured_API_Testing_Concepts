@@ -1,0 +1,108 @@
+RestAssured
+============
+rest-assured
+json-path
+org.json
+gson
+scribejava-apis
+json-schema-validator
+xml-schema-validator
+jackson-databinder
+
+given() - contentType, cookies, authorization details, parameters, headers, etc.
+when() - get, post, put, and delete
+then() - validations - status code, response, response headers, cookies and response body
+
+Day 1
+=====
+1. Project Setup / Rest Assured Dependencies / BDD syntax overview / Simple CRUD operations
+
+Day 2
+=====
+2. Post Request - Different ways of Payload creation
+	1. HashMap
+	2. JSONObject
+	3. POJO
+	4. External JSON file [Using JSONObject]
+
+Day 3
+=====
+Params - Path & Query / Cookies / Headers / Logging
+	1. Params - Path parameters have to be represented in placeholder. Query param don't need it.
+	2. Cookies - [Validate and Retrieve scenarios - cookie()/ getCookie() / getCookies()]
+	3. headers - [Validate and Retrieve scenarios - header()/ getHeader() / getHeaders()]
+	4. Logging - [Different ways of Logging - all() / body() / cookies() / headers()]
+
+Day 4
+=====
+Response Body Validations
+1. Response Body validation using JSON Path [JsonPathFinder]
+2. Response Variable and Use of Assertion
+3. Response Variable and JsonPath Get()
+4. Response Validations - JSONObject and JsonArray - Bookstore
+{
+	books: [
+    {
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "category": "Classic",
+        "price": 10.99
+    },
+    {
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "category": "Fiction",
+        "price": 7.99
+    }
+]
+}
+
+Day 5
+=====
+Response Body Validations - XML / File Upload & Download
+	1. Response Body validation using hamcrest matchers [Travel the xml node and reach the spec node and compare to value]
+	2. Response Variable and XmlPath Get()
+	3. Response Variable and XmlPath Class by passing Response object and GetList()
+	4. Response Variable and Xml Path Class by passing Response object and For loop
+	Resource: https://thetestrequest.com/authors.xml [https://thetestrequest.com/]
+
+1. Use of multiPart() and provide file object. Key is "file" and ContentType is "multipart/form-data"
+   [In case of multiple files, we need to pass key as "files"]
+
+Day 6
+=====
+Response Body Validations - JSON and XML schema validations / Serialization & Deserialization
+Response deals with actual data. Schema deals with type of data
+1. JsonSchemaValidator.matchesJsonSchemaInClasspath()
+2. RestAssuredMatchers.matchesXsdInClasspath()
+Resources: https://jsonformatter.org/json-to-jsonschema, https://www.convertsimple.com/convert-xml-to-xsd-xml-schema/
+
+Serialization => POJO -> JSON
+Deserialization => JSON -> POJO
+
+1. ObjectMapper class is used. WriterWithDefaultPrettyPrinter and WriteValueAsString methods.
+2. ObjectMapper class is used. readValue method.
+
+Day 7
+=====
+Authorization
+=============
+Basic
+auth().basic(username, password)
+Digest
+auth().digest(username, password)
+Preemptive
+auth().preemptive().basic(username, password)
+Bearer Token
+headers("Authorization", "Bearer "+Token)
+API Key
+headers("X-NTK-KEY", "API Key")
+OAuth 1.0
+auth().Oauth(ConsumerKey, ConsumerSecret, AccessToken, TokenSecret)
+OAuth 2.0
+auth().Oauth2(TokenSecret)
+
+Faker Library
+=============
+https://github.com/DiUS/java-faker
+
