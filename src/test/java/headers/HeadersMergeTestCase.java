@@ -34,7 +34,7 @@ public class HeadersMergeTestCase {
                         headerConfig(HeaderConfig.headerConfig().
                                 mergeHeadersWithName("header1")))
                 .body(userData)
-                .log().headers()
+                .log().all()
         .when()
                 .post("https://gorest.co.in/public/v2/users/")
         .then()
@@ -43,4 +43,40 @@ public class HeadersMergeTestCase {
                 .log().body();
     }
 
+    /*
+      Yep — what you’re seeing is actually expected behavior, but it trips a lot of people up because
+      logging ≠ actual request structure.
+
+      Your log shows:
+
+      Headers:
+      Authorization=Bearer xxx
+      header1=value1
+      header1=value2
+      Content-Type=application/json
+      Content-Type=application/json
+      Content-Type=application/json
+
+      At first glance, it looks like:
+
+      headers are duplicated
+      merge is not working ❌
+
+      But that’s not the full story.
+
+      Key Insight
+
+      👉 .log().headers() prints headers as they were added internally,
+      NOT how they are finally serialized into the HTTP request.
+
+      What mergeHeadersWithName("header1") actually does
+
+      It affects the final HTTP request sent over the wire, not the log output.
+
+      But during request execution → it becomes:
+      header1: value1, value2
+
+      ✔ Merge happens late (during request building)
+      ❌ Log does not reflect the merged result
+     */
 }

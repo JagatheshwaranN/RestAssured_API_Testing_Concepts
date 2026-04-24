@@ -24,7 +24,7 @@ public class PayloadUsingOrgJsonLibTestCase {
 
         given()
                 .contentType("application/json")
-                .body(studentData.toString())
+                .body(studentData)
         .when()
                 .post("http://localhost:3000/students")
         .then()

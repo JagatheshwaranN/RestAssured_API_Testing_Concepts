@@ -22,7 +22,7 @@ public class FormParameterTestCase {
     }
 
     @Test
-    public void FormParamWithMultiPart(){
+    public void formParamWithMultiPart(){
 
         given()
                 .multiPart("_token", "dcf46697d708eab0f1de4072e97e.-2pOEJk1ULGz0dr0m6U0oa74PJxHu02P6NcuRgMQ2GE.l1N6Y-BmCuPbtpCi-e5N7uOxUO4sljvhiZ18EWZysQyRGAMm_VoVwti2lw")
